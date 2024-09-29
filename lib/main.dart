@@ -1,5 +1,6 @@
 import 'package:e_commerce/UI/Auth/Login/login_view.dart';
 import 'package:e_commerce/UI/Splash/splash_view.dart';
+import 'package:e_commerce/UI/Utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,6 +23,8 @@ class App extends StatelessWidget {
             SplashView.splashId: (context) => const SplashView(),
             LoginView.loginViewId: (context) => const LoginView(),
           },
+          theme: AppTheme.mainTheme,
+          themeMode: ThemeMode.light,
         );
       },
     );
