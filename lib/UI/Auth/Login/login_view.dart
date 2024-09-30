@@ -1,3 +1,4 @@
+import 'package:e_commerce/UI/Auth/Login/Login_View_body.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -8,13 +9,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [],
-          ),
-        ),
-      ),
+      body: LoginViewBody()
     );
   }
 }

@@ -8,7 +8,7 @@ class TextFieldItem extends StatefulWidget {
       required this.hintText,
       required this.label,
       this.suffixIcon,
-      this.validator,
+     required this.validator,
       required this.textController,
       this.keyboardTupe,
       this.isPassword = false}); // Add isPassword parameter
@@ -19,7 +19,7 @@ class TextFieldItem extends StatefulWidget {
   final Widget? suffixIcon;
   final TextEditingController textController;
   final bool isPassword;
-  String? Function(String?)? validator;
+  final String? Function(String?)? validator;
   @override
   State<TextFieldItem> createState() => _TextFieldItemState();
 }
