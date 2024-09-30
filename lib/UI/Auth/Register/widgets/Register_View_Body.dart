@@ -18,7 +18,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
-  GlobalKey formKey = GlobalKey();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,15 +39,17 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 },
               ),
               TextFieldItem(
-                  hintText: 'enter your phone number',
-                  label: 'Phone Number',
-                  textController: phoneNumberController,
-                  validator: (value) {
-                    if (value!.length < 11) {
-                      return "Not Valid Phone";
-                    }
-                    return null;
-                  }),
+                hintText: 'enter your phone number',
+                label: 'Phone Number',
+                keyboardTupe: TextInputType.number,
+                textController: phoneNumberController,
+                validator: (value) {
+                  if (value!.length < 11) {
+                    return "Not Valid Phone";
+                  }
+                  return null;
+                },
+              ),
               TextFieldItem(
                 hintText: 'Enter your email address',
                 label: 'Email',

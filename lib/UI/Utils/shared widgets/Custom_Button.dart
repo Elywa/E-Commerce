@@ -12,19 +12,20 @@ class CustomButton extends StatelessWidget {
           EdgeInsets.only(top: 20.h, bottom: 20.h, left: 16.w, right: 16.w),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            minimumSize:
-                Size(double.infinity, MediaQuery.of(context).size.height * .07),
-            backgroundColor: AppColors.whiteColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            )),
+          minimumSize:
+              Size(double.infinity, MediaQuery.of(context).size.height * .07),
+          backgroundColor: AppColors.whiteColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
         onPressed: () {},
         child: Text(
           text,
           style: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(color: AppColors.blueColor, fontSize: 22),
+              .copyWith(color: AppColors.primaryColor, fontSize: 22),
         ),
       ),
     );
