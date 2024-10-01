@@ -3,6 +3,6 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_enti
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures.dart';
 
 abstract class AuthRepository {
- Future<Either<Failures , AuthResultEntity>> register(String name, String email, String password, String rePassword,
-      String phone);
+  Future<Either<Failures, AuthResultEntity>> register(String name, String email,
+      String password, String rePassword, String phone);
 }

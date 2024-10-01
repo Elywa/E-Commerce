@@ -9,7 +9,8 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.8
-  dartz: 
+  dartz: null
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
