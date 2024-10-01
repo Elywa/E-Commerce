@@ -91,7 +91,12 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 },
                 // Enable password visibility toggle
               ),
-              const CustomButton(text: 'Sign Up')
+              CustomButton(
+                text: 'Sign Up',
+                onPressed: () {
+                  viewModel.register();
+                },
+              )
             ],
           ),
         ),

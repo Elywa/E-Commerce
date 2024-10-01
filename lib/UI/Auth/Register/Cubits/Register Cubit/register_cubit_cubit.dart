@@ -6,8 +6,8 @@ part 'register_cubit_state.dart';
 
 class RegisterCubit extends Cubit<RegisterCubitState> {
   RegisterCubit() : super(RegisterCubitInitial());
-// handle logic - hold data 
-    TextEditingController fullNameController = TextEditingController();
+// handle logic - hold data
+  TextEditingController fullNameController = TextEditingController();
 
   TextEditingController phoneNumberController = TextEditingController();
 
@@ -18,7 +18,5 @@ class RegisterCubit extends Cubit<RegisterCubitState> {
   TextEditingController confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
-  void register(){}
-  
+  void register() {}
 }

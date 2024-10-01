@@ -8,7 +8,7 @@ class TextFieldItem extends StatefulWidget {
       required this.hintText,
       required this.label,
       this.suffixIcon,
-     required this.validator,
+      required this.validator,
       required this.textController,
       this.keyboardTupe,
       this.isPassword = false}); // Add isPassword parameter

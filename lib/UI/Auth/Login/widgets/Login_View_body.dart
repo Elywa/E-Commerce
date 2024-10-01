@@ -105,7 +105,7 @@ class LoginViewBody extends StatelessWidget {
 
               Padding(
                 padding: EdgeInsets.only(top: 40.h),
-                child: const CustomButton(text: 'Login'),
+                child: CustomButton(text: 'Login'),
               ),
 
               Padding(

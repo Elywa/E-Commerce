@@ -7,7 +7,7 @@ class LoginView extends StatelessWidget {
   static const String loginViewId = 'LoginView';
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
         backgroundColor: AppColors.primaryColor, body: LoginViewBody());
   }
 }
