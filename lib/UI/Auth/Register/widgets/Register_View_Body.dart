@@ -39,7 +39,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 textController: viewModel.phoneNumberController,
                 validator: (value) {
                   if (value!.length < 11) {
-                    return "Not Valid Phone";
+                    return "Not Valid Phone Number";
                   }
                   return null;
                 },
