@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:e_commerce/Data/Model/response/register_response_dto/error_dto.dart';
+import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_entity.dart';
 import 'package:equatable/equatable.dart';
 
 import 'user.dart';
@@ -33,12 +34,19 @@ class RegisterResponseDto extends Equatable {
     );
   }
 
+  AuthResultEntity toAuthResultEntity() {
+    return AuthResultEntity(
+      token: token, 
+      user: user?.toUserEntity()
+    );
+  }
+
   Map<String, dynamic> toMap() => {
         'message': message,
         'statusMsg': statusMsg,
         'user': user?.toMap(),
         'token': token,
-        'errors' : error?.toMap(),
+        'errors': error?.toMap(),
       };
 
   /// `dart:convert`

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_commerce/Domain/Entities/auth_response_entity/user_entity.dart';
 import 'package:equatable/equatable.dart';
 
 class UserDto extends Equatable {
@@ -20,6 +21,9 @@ class UserDto extends Equatable {
         'email': email,
         'role': role,
       };
+  UserEntity toUserEntity() {
+    return UserEntity(email: email, name: name);
+  }
 
   /// `dart:convert`
   ///
