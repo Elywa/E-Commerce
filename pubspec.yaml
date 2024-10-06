@@ -8,6 +8,7 @@ environment:
   sdk: ^3.5.0
 
 dependencies:
+  connectivity_plus: ^6.0.5
   cupertino_icons: ^1.0.8
   dartz: null
   equatable: ^2.0.5
