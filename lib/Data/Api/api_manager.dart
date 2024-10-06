@@ -9,6 +9,16 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.
 import 'package:http/http.dart' as http;
 
 class ApiManager {
+  // singleton
+  ApiManager._();
+
+  static ApiManager? _instance;
+
+  static getInstance() {
+    _instance ??= ApiManager._();
+    return _instance!;
+  }
+
   //https://ecommerce.routemisr.com/api/v1/auth/signup
   Future<Either<FailuresEntity, RegisterResponseDto>> register(String name,
       String email, String password, String rePassword, String phone) async {
@@ -22,7 +32,7 @@ class ApiManager {
           password: password,
           phone: phone,
           rePassword: rePassword);
-      var response = await http.post(url, body: request);
+      var response = await http.post(url, body: request.toJson());
       var registerResponse =
           RegisterResponseDto.fromJson(jsonDecode(response.body));
       if (response.statusCode >= 200 && response.statusCode < 300) {
