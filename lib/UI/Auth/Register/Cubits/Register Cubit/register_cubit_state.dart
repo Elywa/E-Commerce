@@ -7,6 +7,12 @@ final class RegisterCubitInitial extends RegisterCubitState {}
 
 final class RegisterCubitLoading extends RegisterCubitState {}
 
-final class RegisterCubSuccess extends RegisterCubitState {}
+final class RegisterCubSuccess extends RegisterCubitState {
+  AuthResultEntity response;
+  RegisterCubSuccess({required this.response});
+}
 
-final class RegisterCubitFailure extends RegisterCubitState {}
+final class RegisterCubitFailure extends RegisterCubitState {
+  final String errMessage;
+  RegisterCubitFailure({required this.errMessage});
+}
