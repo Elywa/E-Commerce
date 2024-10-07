@@ -39,10 +39,19 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               isLoading = false;
               debugPrint(
                   'Success =============================================');
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Register Success'),
+                ),
+              );
             } else if (state is RegisterCubitFailure) {
               isLoading = false;
               debugPrint(state.errMessage);
-
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errMessage),
+                ),
+              );
               // return Fluttertoast.showToast(msg: state.errMessage);
             }
           },
@@ -96,7 +105,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     TextFieldItem(
                       hintText: 'enter your password',
                       label: 'Password',
-                      keyboardTupe: TextInputType.number,
+
                       textController: viewModel.passwordController,
                       isPassword: true,
                       validator: (value) {
@@ -110,7 +119,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     TextFieldItem(
                       hintText: 'confirm password',
                       label: 'Confirm password',
-                      keyboardTupe: TextInputType.number,
+                      // keyboardTupe: TextInputType.number,
                       textController: viewModel.confirmPasswordController,
                       isPassword: true,
                       validator: (value) {

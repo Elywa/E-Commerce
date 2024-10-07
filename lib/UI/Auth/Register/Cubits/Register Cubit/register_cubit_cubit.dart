@@ -2,8 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_entity.dart';
 import 'package:e_commerce/Domain/Use%20cases/register_use_case.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 part 'register_cubit_state.dart';
 

@@ -38,9 +38,6 @@ class RegisterRequest extends Equatable {
   /// `dart:convert`
   ///
   /// Parses the string and returns the resulting Json object as [RegisterRequest].
-  factory RegisterRequest.fromJson(String data) {
-    return RegisterRequest.fromMap(json.decode(data) as Map<String, dynamic>);
-  }
 
   /// `dart:convert`
   ///
