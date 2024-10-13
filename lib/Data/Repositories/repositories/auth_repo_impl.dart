@@ -20,4 +20,10 @@ class AuthRepoImpl implements AuthRepository {
       return right(response);
     });
   }
+
+  @override
+  Future<Either<FailuresEntity, AuthResultEntity>> login(
+      String email, String password) {
+    return dataSource.login(email, password);
+  }
 }

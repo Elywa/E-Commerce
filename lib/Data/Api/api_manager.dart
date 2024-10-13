@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/Data/Api/api_constans.dart';
+import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
+import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:flutter/foundation.dart';
@@ -35,7 +37,7 @@ class ApiManager {
         phone: phone,
         rePassword: rePassword);
     debugPrint(request.toString());
-    var response = await http.post(url, body: request.toMap());
+    var response = await http.post(url, body: request.toJson());
     var registerResponse =
         RegisterResponseDto.fromJson(jsonDecode(response.body));
     if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -50,6 +52,24 @@ class ApiManager {
           errMessage: registerResponse.error != null
               ? registerResponse.error!.msg
               : registerResponse.message));
+    }
+  }
+
+  Future<Either<FailuresEntity, LoginResponseDto>> login(
+      String email, String password) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url = Uri.https(ApiConstans.baseUrl, ApiConstans.loginEndPoint);
+    LoginRequest loginRequest = LoginRequest(email: email, password: password);
+    debugPrint(loginRequest.toString());
+    var response = await http.post(url, body: loginRequest.toJson());
+    var loginResponse = LoginResponseDto.fromJson(jsonDecode(response.body));
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(loginResponse);
+    } else {
+      return left(ServerError(errMessage: loginResponse.message));
     }
   }
 }

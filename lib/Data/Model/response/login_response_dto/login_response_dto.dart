@@ -1,4 +1,5 @@
 import 'package:e_commerce/Data/Model/response/register_response_dto/user_dto.dart';
+import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_entity.dart';
 
 class LoginResponseDto {
   final String? message;
@@ -17,6 +18,9 @@ class LoginResponseDto {
           : UserDto.fromJson(data['user'] as Map<String, dynamic>),
       token: data['token'] as String?,
     );
+  }
+  AuthResultEntity toAuthResultEntity() {
+    return AuthResultEntity(token: token , user: user?.toUserEntity());
   }
 
   Map<String, dynamic> toJson() => {

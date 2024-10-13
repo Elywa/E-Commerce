@@ -1,8 +1,6 @@
-import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
 
-class RegisterRequest extends Equatable {
+class RegisterRequest {
   final String? name;
   final String? email;
   final String? password;
@@ -17,7 +15,7 @@ class RegisterRequest extends Equatable {
     this.phone,
   });
 
-  factory RegisterRequest.fromMap(Map<String, dynamic> data) {
+  factory RegisterRequest.fromJson(Map<String, dynamic> data) {
     return RegisterRequest(
       name: data['name'] as String?,
       email: data['email'] as String?,
@@ -27,23 +25,11 @@ class RegisterRequest extends Equatable {
     );
   }
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         'name': name,
         'email': email,
         'password': password,
         'rePassword': rePassword,
         'phone': phone,
       };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [RegisterRequest].
-
-  /// `dart:convert`
-  ///
-  /// Converts [RegisterRequest] to a JSON string.
-  String toJson() => json.encode(toMap());
-
-  @override
-  List<Object?> get props => [name, email, password, rePassword, phone];
 }
