@@ -1,3 +1,5 @@
+import 'package:e_commerce/Domain/di.dart';
+import 'package:e_commerce/UI/Auth/Login/cubit/login_cubit.dart';
 import 'package:e_commerce/UI/Auth/Register/register_view.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Custom_Button.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Route_Title.dart';
@@ -7,16 +9,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  LoginCubit viewModel = LoginCubit(loginUseCase: injectLoginUseCase());
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Form(
-        key: formKey,
+        key: viewModel.formKey,
         child: Padding(
           padding: EdgeInsets.only(left: 16.w),
           child: Column(
@@ -64,7 +64,7 @@ class LoginViewBody extends StatelessWidget {
                     return null;
                   }
                 },
-                textController: emailController,
+                textController: viewModel.emailController,
               ),
 
               // Password TextField with validation
@@ -84,7 +84,7 @@ class LoginViewBody extends StatelessWidget {
                     return null;
                   }
                 },
-                textController: passwordController,
+                textController: viewModel.passwordController,
               ),
 
               Padding(
