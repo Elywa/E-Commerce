@@ -37,7 +37,7 @@ class ApiManager {
     debugPrint(request.toString());
     var response = await http.post(url, body: request.toMap());
     var registerResponse =
-        RegisterResponseDto.fromMap(jsonDecode(response.body));
+        RegisterResponseDto.fromJson(jsonDecode(response.body));
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return right(registerResponse);
     } else {

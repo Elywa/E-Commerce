@@ -5,4 +5,6 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.
 abstract class AuthRepository {
   Future<Either<FailuresEntity, AuthResultEntity>> register(String name,
       String email, String password, String rePassword, String phone);
+
+      
 }

@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:e_commerce/Data/Model/response/register_response_dto/error_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_entity.dart';
-import 'package:equatable/equatable.dart';
 
-import 'user.dart';
+import 'user_dto.dart';
 
-class RegisterResponseDto extends Equatable {
+class RegisterResponseDto {
   final String? message;
   final UserDto? user;
   final String? token;
@@ -20,48 +17,29 @@ class RegisterResponseDto extends Equatable {
     this.error,
   });
 
-  factory RegisterResponseDto.fromMap(Map<String, dynamic> data) {
+  factory RegisterResponseDto.fromJson(Map<String, dynamic> data) {
     return RegisterResponseDto(
       message: data['message'] as String?,
       statusMsg: data['statusMsg'] as String?,
       error: data['errors'] == null
           ? null
-          : ErrorDto.fromMap(data['errors'] as Map<String, dynamic>),
+          : ErrorDto.fromJson(data['errors'] as Map<String, dynamic>),
       user: data['user'] == null
           ? null
-          : UserDto.fromMap(data['user'] as Map<String, dynamic>),
+          : UserDto.fromJson(data['user'] as Map<String, dynamic>),
       token: data['token'] as String?,
     );
   }
 
   AuthResultEntity toAuthResultEntity() {
-    return AuthResultEntity(
-      token: token, 
-      user: user?.toUserEntity()
-    );
+    return AuthResultEntity(token: token, user: user?.toUserEntity());
   }
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         'message': message,
         'statusMsg': statusMsg,
-        'user': user?.toMap(),
+        'user': user?.toJSon(),
         'token': token,
-        'errors': error?.toMap(),
+        'errors': error?.toJson(),
       };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [RegisterResponseDto].
-  factory RegisterResponseDto.fromJson(String data) {
-    return RegisterResponseDto.fromMap(
-        json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [RegisterResponseDto] to a JSON string.
-  String toJson() => json.encode(toMap());
-
-  @override
-  List<Object?> get props => [message, user, token];
 }
