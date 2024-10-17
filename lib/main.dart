@@ -19,7 +19,8 @@ class App extends StatelessWidget {
       designSize: const Size(430, 932),
       builder: (context, child) {
         return MaterialApp(
-          initialRoute: SplashView.splashId,
+          initialRoute: HomeView.homeViewId,
+          // initialRoute: SplashView.splashId,
           debugShowCheckedModeBanner: false,
           routes: {
             SplashView.splashId: (context) => const SplashView(),
