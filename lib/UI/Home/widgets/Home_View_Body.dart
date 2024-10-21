@@ -56,9 +56,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           topRight: Radius.circular(20.r),
         ),
         child: SizedBox(
-          height: 82.h, // Adjusted height to provide more space
+          height: MediaQuery.of(context).size.height * .088,
           child: BottomNavigationBar(
-            unselectedFontSize: 12.sp,
             onTap: (value) {
               setState(() {
                 selectedIndex = value;
