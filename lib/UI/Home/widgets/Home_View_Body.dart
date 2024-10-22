@@ -1,8 +1,8 @@
 import 'package:e_commerce/UI/Home/cubits/Home%20Cubit/home_view_model_cubit.dart';
-import 'package:e_commerce/UI/Home/functions.dart';
+import 'package:e_commerce/UI/Utils/functions.dart';
 import 'package:e_commerce/UI/Home/tabs/favourite%20tab/favourite_tab_view.dart';
 import 'package:e_commerce/UI/Home/tabs/home%20tab/home_tab_view.dart';
-import 'package:e_commerce/UI/Home/tabs/product%20details%20tab/products_tab_details.dart';
+import 'package:e_commerce/UI/Home/tabs/Categories%20tab/categories_tab.dart';
 import 'package:e_commerce/UI/Home/tabs/profile%20tab/profile_tab_view.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';

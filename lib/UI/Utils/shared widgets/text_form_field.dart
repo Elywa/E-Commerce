@@ -1,3 +1,4 @@
+import 'package:e_commerce/UI/Utils/functions.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,14 +73,8 @@ class _TextFieldItemState extends State<TextFieldItem> {
                   .copyWith(color: Colors.black.withOpacity(.5), fontSize: 16),
               filled: true,
               fillColor: AppColors.whiteColor,
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.r),
-                borderSide: const BorderSide(color: AppColors.lightBlue),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.r),
-                borderSide: const BorderSide(color: AppColors.lightBlue),
-              ),
+              focusedBorder: buildBorders(AppColors.lightBlue, 16),
+              enabledBorder: buildBorders(AppColors.lightBlue, 16),
             ),
           ),
         ],

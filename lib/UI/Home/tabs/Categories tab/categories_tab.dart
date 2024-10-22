@@ -1,8 +1,8 @@
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
-class ProductDetailsTabView extends StatelessWidget {
-  const ProductDetailsTabView({super.key});
+class CategoriesTabView extends StatelessWidget {
+  const CategoriesTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
