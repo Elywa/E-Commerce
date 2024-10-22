@@ -1,5 +1,6 @@
 import 'package:e_commerce/UI/Home/widgets/announcements_widgets.dart';
 import 'package:e_commerce/UI/Home/widgets/search_row.dart';
+import 'package:e_commerce/UI/Home/widgets/two_items_custom_row.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/functions.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
@@ -36,6 +37,10 @@ class HomeTabView extends StatelessWidget {
               height: 16.h,
             ),
             AnnouncementsWidgets(images: images),
+            const SizedBox(
+              height: 24,
+            ),
+            const TwoItemsCustomRow(text1: 'Categories', text2: 'view all')
           ],
         ),
       ),

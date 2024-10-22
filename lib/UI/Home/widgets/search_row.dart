@@ -23,19 +23,23 @@ class SearchRow extends StatelessWidget {
                 ),
               ),
               hintText: 'what do you search for?',
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(
-                      color: AppColors.primaryColor,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w300),
+              hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  color: AppColors.primaryColor,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w300),
               enabledBorder: buildBorders(AppColors.primaryColor, 40),
             ),
           ),
         ),
         IconButton(
-            onPressed: () {}, icon: const Icon(Icons.shopping_cart))
+            onPressed: () {},
+            style: const ButtonStyle(
+              iconColor: WidgetStatePropertyAll(AppColors.primaryColor),
+            ),
+            icon: const Icon(
+              Icons.shopping_cart_outlined,
+              size: 30,
+            ))
       ],
     );
   }
