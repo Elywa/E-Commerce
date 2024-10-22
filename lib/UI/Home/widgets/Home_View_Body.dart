@@ -1,9 +1,11 @@
+import 'package:e_commerce/UI/Home/cubits/Home%20Cubit/home_view_model_cubit.dart';
 import 'package:e_commerce/UI/Home/tabs/favourite%20tab/favourite_tab_view.dart';
 import 'package:e_commerce/UI/Home/tabs/home%20tab/home_tab_view.dart';
 import 'package:e_commerce/UI/Home/tabs/product%20details%20tab/products_tab_details.dart';
 import 'package:e_commerce/UI/Home/tabs/profile%20tab/profile_tab_view.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -13,27 +15,26 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
-  int selectedIndex = 0;
-  List<Widget> tabs = [
-    const HomeTabView(),
-    const ProductDetailsTabView(),
-    const FavouriteTabView(),
-    const ProfileTabView(),
-  ];
+  HomeViewModelCubit viewModel = HomeViewModelCubit();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.whiteColor,
-      body: tabs[selectedIndex],
-      bottomNavigationBar: buildCustomBottomNavigationBar(),
+    return BlocBuilder(
+      bloc: viewModel,
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: AppColors.whiteColor,
+          body: viewModel.tabs[viewModel.selectedIndex],
+          bottomNavigationBar: buildCustomBottomNavigationBar(),
+        );
+      },
     );
   }
 
   Widget buildIcon(String assetPath, bool isSelected) {
     return Container(
-      width: 43.w, // Further reduced width for better fitting
-      height: 40.h, // Further reduced height for better fitting
+      width: 43.w,
+      height: 40.h,
       decoration: isSelected
           ? const BoxDecoration(
               color: AppColors.whiteColor,
@@ -59,43 +60,41 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           height: MediaQuery.of(context).size.height * .088,
           child: BottomNavigationBar(
             onTap: (value) {
-              setState(() {
-                selectedIndex = value;
-              });
+              viewModel.changeTab(value);
             },
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             showUnselectedLabels: false,
             selectedItemColor: AppColors.whiteColor,
             backgroundColor: AppColors.primaryColor,
-            currentIndex: selectedIndex,
+            currentIndex: viewModel.selectedIndex,
             items: [
               BottomNavigationBarItem(
                 label: 'Home',
                 icon: buildIcon(
                   'assets/images/home_unselected.png',
-                  selectedIndex == 0,
+                  viewModel.selectedIndex == 0,
                 ),
               ),
               BottomNavigationBarItem(
                 label: 'Details',
                 icon: buildIcon(
                   'assets/images/product_unselected.png',
-                  selectedIndex == 1,
+                  viewModel.selectedIndex == 1,
                 ),
               ),
               BottomNavigationBarItem(
                 label: 'Favourites',
                 icon: buildIcon(
                   'assets/images/favourite_unselected.png',
-                  selectedIndex == 2,
+                  viewModel.selectedIndex == 2,
                 ),
               ),
               BottomNavigationBarItem(
                 label: 'Profile',
                 icon: buildIcon(
                   'assets/images/profile_unselected.png',
-                  selectedIndex == 3,
+                  viewModel.selectedIndex == 3,
                 ),
               ),
             ],

@@ -7,4 +7,6 @@ sealed class HomeViewModelState extends Equatable {
   List<Object> get props => [];
 }
 
-final class HomeViewModelInitial extends HomeViewModelState {}
+final class InitialState extends HomeViewModelState {}
+
+final class ChangeTabState extends HomeViewModelState {}
