@@ -3,5 +3,5 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.
 import 'package:e_commerce/Domain/Entities/category_response_entity/category_response_entity.dart';
 
 abstract class HomeTabRepo {
-  Either<FailuresEntity, CategoryResponseEntity> getCategories();
+  Future<Either<FailuresEntity, CategoryResponseEntity>> getCategories();
 }
