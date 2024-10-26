@@ -1,11 +1,10 @@
 import 'package:e_commerce/UI/Home/widgets/announcements_widgets.dart';
+import 'package:e_commerce/UI/Home/widgets/custom_grid_view.dart';
+
 import 'package:e_commerce/UI/Home/widgets/search_row.dart';
 import 'package:e_commerce/UI/Home/widgets/two_items_custom_row.dart';
-import 'package:e_commerce/UI/Utils/colors.dart';
-import 'package:e_commerce/UI/Utils/functions.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeTabView extends StatelessWidget {
@@ -15,6 +14,7 @@ class HomeTabView extends StatelessWidget {
     MyAssets.announcement2,
     MyAssets.announcement3
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,7 +40,15 @@ class HomeTabView extends StatelessWidget {
             const SizedBox(
               height: 24,
             ),
-            const TwoItemsCustomRow(text1: 'Categories', text2: 'view all')
+            const TwoItemsCustomRow(text1: 'Categories', text2: 'view all'),
+            const SizedBox(
+              height: 16,
+            ),
+            const CustomGridView(),
+            SizedBox(
+              height: 24.h,
+            ),
+            const TwoItemsCustomRow(text1: 'products', text2: 'view all')
           ],
         ),
       ),

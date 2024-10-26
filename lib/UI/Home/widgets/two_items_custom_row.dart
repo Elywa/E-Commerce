@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TwoItemsCustomRow extends StatelessWidget {
   const TwoItemsCustomRow(
-      {super.key, required this.text1, required this.text2});
+      {
+        super.key, required this.text1, required this.text2});
   final String text1;
   final String text2;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
