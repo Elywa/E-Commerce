@@ -10,11 +10,15 @@ import 'metadata.dart';
 @immutable
 class CategoryResponseDto extends CategoryResponseEntity {
   final Metadata? metadata;
-
-  const CategoryResponseDto({super.results, this.metadata, super.data});
+  final String? message;
+  final String? statusMsg;
+  const CategoryResponseDto(
+      {this.message, this.statusMsg, super.results, this.metadata, super.data});
 
   factory CategoryResponseDto.fromJson(Map<String, dynamic> data) {
     return CategoryResponseDto(
+      message: data['message'] as String?,
+      statusMsg: data['statusMsg'] as String?,
       results: data['results'] as int?,
       metadata: data['metadata'] == null
           ? null
@@ -24,6 +28,4 @@ class CategoryResponseDto extends CategoryResponseEntity {
           .toList(),
     );
   }
-
-
 }
