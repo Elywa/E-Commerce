@@ -5,9 +5,11 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/Data/Api/api_constans.dart';
 import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
+import 'package:e_commerce/Data/Model/response/category_response_dto/category_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
+import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -70,6 +72,23 @@ class ApiManager {
       return right(loginResponse);
     } else {
       return left(ServerError(errMessage: loginResponse.message));
+    }
+  }
+
+  Future<Either<FailuresEntity, CategoryResponseDto>> getAllCategories() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url =
+        Uri.https(ApiConstans.baseUrl, ApiConstans.getAllCategoriesEndPoint);
+    var response = await http.get(url);
+    var categories = CategoryResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(categories);
+    } else {
+      return left(ServerError(errMessage: categories.message));
     }
   }
 }
