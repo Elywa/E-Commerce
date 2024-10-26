@@ -20,7 +20,7 @@ class LoginResponseDto {
     );
   }
   AuthResultEntity toAuthResultEntity() {
-    return AuthResultEntity(token: token , user: user?.toUserEntity());
+    return AuthResultEntity(token: token, user: user?.toUserEntity());
   }
 
   Map<String, dynamic> toJson() => {

@@ -13,7 +13,7 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
 
   int selectedIndex = 0;
   List<Widget> tabs = [
-     HomeTabView(),
+    HomeTabView(),
     const CategoriesTabView(),
     const FavouriteTabView(),
     const ProfileTabView(),
