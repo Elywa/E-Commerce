@@ -7,7 +7,7 @@ class HomeTabInitialState extends HomeTabStates {}
 class HomeTabLoadingState extends HomeTabStates {}
 
 class HomeTabSuccessState extends HomeTabStates {
-  CategoryResponseEntity cateories;
+  CategoryOrBrandsResponseEntity cateories;
   HomeTabSuccessState({required this.cateories});
 }
 

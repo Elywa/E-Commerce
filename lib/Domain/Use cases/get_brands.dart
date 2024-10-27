@@ -3,11 +3,10 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.
 import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_response_entity.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/home_tab_repo.dart';
 
-class GetAllCategoriesUseCase {
+class GetBrands {
   HomeTabRepo homeTabRepo;
-  GetAllCategoriesUseCase({required this.homeTabRepo});
-
-  Future<Either<FailuresEntity, CategoryOrBrandsResponseEntity>> invoke() {
-    return homeTabRepo.getCategories();
+  GetBrands({required this.homeTabRepo});
+  Future<Either<FailuresEntity, CategoryOrBrandsResponseEntity>> getBrands() {
+    return homeTabRepo.getBrands();
   }
 }

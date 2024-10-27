@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/Data/Api/api_constans.dart';
 import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
-import 'package:e_commerce/Data/Model/response/category_response_dto/category_response_dto.dart';
+import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
@@ -75,7 +75,8 @@ class ApiManager {
     }
   }
 
-  Future<Either<FailuresEntity, CategoryResponseDto>> getAllCategories() async {
+  Future<Either<FailuresEntity, CategoryOrBrandsResponseDto>>
+      getAllCategories() async {
     var connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
       return left(NetworkError(errMessage: 'No internet conncetion!'));
@@ -83,12 +84,31 @@ class ApiManager {
     Uri url =
         Uri.https(ApiConstans.baseUrl, ApiConstans.getAllCategoriesEndPoint);
     var response = await http.get(url);
-    var categories = CategoryResponseDto.fromJson(jsonDecode(response.body));
+    var categories =
+        CategoryOrBrandsResponseDto.fromJson(jsonDecode(response.body));
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return right(categories);
     } else {
       return left(ServerError(errMessage: categories.message));
+    }
+  }
+
+  Future<Either<FailuresEntity, CategoryOrBrandsResponseDto>>
+      getAllBrands() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url = Uri.https(ApiConstans.baseUrl, ApiConstans.getAllBrandsEndPoint);
+    var response = await http.get(url);
+    var brands =
+        CategoryOrBrandsResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(brands);
+    } else {
+      return left(ServerError(errMessage: brands.message));
     }
   }
 }

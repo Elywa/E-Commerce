@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce/Data/Model/response/category_response_dto/category_response_dto.dart';
+import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
-import 'package:e_commerce/Domain/Entities/category_response_entity/category_entity.dart';
-import 'package:e_commerce/Domain/Entities/category_response_entity/category_response_entity.dart';
+import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_entity.dart';
+import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_response_entity.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:equatable/equatable.dart';
@@ -14,7 +14,7 @@ class HomeTabCubit extends Cubit<HomeTabStates> {
       : super(HomeTabInitialState());
   GetAllCategoriesUseCase categoriesUseCase;
   // handle logic   - hold data
-  List<CategoryEntity> categoriesList = [];
+  List<CategoryOrBrandsEntity> categoriesList = [];
 
   void getAllCategories() async {
     emit(HomeTabLoadingState());

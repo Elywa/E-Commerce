@@ -1,16 +1,15 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:e_commerce/Domain/Entities/category_response_entity/category_entity.dart';
+import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_entity.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class CategorDto  extends CategoryEntity{
-
+class CategoryOrBrandsDto extends CategoryOrBrandsEntity {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  const CategorDto({
+  const CategoryOrBrandsDto({
     super.id,
     super.name,
     super.slug,
@@ -19,7 +18,8 @@ class CategorDto  extends CategoryEntity{
     this.updatedAt,
   });
 
-  factory CategorDto.fromJson(Map<String, dynamic> data) => CategorDto(
+  factory CategoryOrBrandsDto.fromJson(Map<String, dynamic> data) =>
+      CategoryOrBrandsDto(
         id: data['_id'] as String?,
         name: data['name'] as String?,
         slug: data['slug'] as String?,

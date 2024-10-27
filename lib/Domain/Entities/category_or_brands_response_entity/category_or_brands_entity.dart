@@ -4,13 +4,13 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class CategoryEntity {
+class CategoryOrBrandsEntity {
   final String? id;
   final String? name;
   final String? slug;
   final String? image;
 
-  const CategoryEntity({
+  const CategoryOrBrandsEntity({
     this.id,
     this.name,
     this.slug,
