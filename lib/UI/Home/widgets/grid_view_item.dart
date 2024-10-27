@@ -1,6 +1,4 @@
-import 'package:e_commerce/UI/Home/widgets/Home_View_Body.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
-import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,9 +18,9 @@ class GridViewItem extends StatelessWidget {
                 'https://e7.pngegg.com/pngimages/10/205/png-clipart-computer-icons-error-information-error-angle-triangle-thumbnail.png'),
           ),
         ),
-        // const SizedBox(
-        //   height: ,
-        // ),
+        const SizedBox(
+          height: 10,
+        ),
         Expanded(
             flex: 2,
             child: Text(

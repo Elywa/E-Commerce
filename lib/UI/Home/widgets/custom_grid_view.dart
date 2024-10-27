@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomGridView extends StatelessWidget {
-   CustomGridView({super.key , required this.homeTabCubit});
-  HomeTabCubit homeTabCubit ; 
+  CustomGridView({super.key, required this.homeTabCubit, required this.type});
+  HomeTabCubit homeTabCubit;
+  final String type;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 250.h,
       child: GridView.builder(
           padding: EdgeInsets.zero,
-          itemCount: homeTabCubit.categoriesList.length,
+          itemCount: type == 'categories'
+              ? homeTabCubit.categoriesList.length
+              : homeTabCubit.brandsList.length,
           scrollDirection: Axis.horizontal,
           physics: const BouncingScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -21,7 +24,14 @@ class CustomGridView extends StatelessWidget {
             mainAxisSpacing: 5,
           ),
           itemBuilder: (context, index) {
-            return  GridViewItem(imagePath: homeTabCubit.categoriesList[index].image.toString(), name:homeTabCubit.categoriesList[index].name ,);
+            return GridViewItem(
+              imagePath: type == 'categories'
+                  ? homeTabCubit.categoriesList[index].image.toString()
+                  : homeTabCubit.brandsList[index].image.toString(),
+              name: type == 'brands'
+                  ? homeTabCubit.brandsList[index].name
+                  : homeTabCubit.categoriesList[index].name,
+            );
           }),
     );
   }
