@@ -7,7 +7,7 @@ class GetAllCategoriesUseCase {
   HomeTabRepo homeTabRepo;
   GetAllCategoriesUseCase({required this.homeTabRepo});
 
-  Either<FailuresEntity, CategoryResponseEntity> invoke() {
+  Future<Either<FailuresEntity, CategoryResponseEntity>> invoke() {
     return homeTabRepo.getCategories();
   }
 }

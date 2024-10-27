@@ -20,7 +20,7 @@ class MyAssets {
 
   static const String profileUnSelected =
       'assets/images/profile_unselected.png';
-
+  static const String errorImage = 'assets/images/error2.png';
   static const String routeTitle = 'assets/images/Route title.png';
 
   static const String routeImage = 'assets/images/route_image.png';

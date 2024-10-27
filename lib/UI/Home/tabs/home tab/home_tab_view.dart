@@ -1,20 +1,25 @@
+import 'package:e_commerce/Domain/di.dart';
+import 'package:e_commerce/UI/Home/tabs/home%20tab/cubits/cubit/home_tab_cubit.dart';
 import 'package:e_commerce/UI/Home/widgets/announcements_widgets.dart';
 import 'package:e_commerce/UI/Home/widgets/custom_grid_view.dart';
 
 import 'package:e_commerce/UI/Home/widgets/search_row.dart';
 import 'package:e_commerce/UI/Home/widgets/two_items_custom_row.dart';
+import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeTabView extends StatelessWidget {
   HomeTabView({super.key});
+  HomeTabCubit viewModel =
+      HomeTabCubit(categoriesUseCase: injectGetAllCategoriesUseCase());
   List<String> images = [
     MyAssets.announcement1,
     MyAssets.announcement2,
     MyAssets.announcement3
   ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,7 +49,27 @@ class HomeTabView extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const CustomGridView(),
+            BlocBuilder<HomeTabCubit, HomeTabStates>(
+              bloc: viewModel..getAllCategories(),
+              builder: (context, state) {
+                if (state is HomeTabLoadingState) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is HomeTabFailureState) {
+                  return Center(
+                    child: Text(
+                      state.error.toString(),
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: AppColors.primaryColor, fontSize: 18),
+                    ),
+                  );
+                } else {
+                  return CustomGridView(
+                    homeTabCubit: viewModel,
+                  );
+                }
+              },
+            ),
             SizedBox(
               height: 24.h,
             ),

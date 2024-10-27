@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GridViewItem extends StatelessWidget {
-  const GridViewItem({super.key});
-
+  const GridViewItem({super.key, required this.imagePath, required this.name});
+  final String? imagePath;
+  final String? name;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,8 +15,9 @@ class GridViewItem extends StatelessWidget {
         Expanded(
           flex: 5,
           child: CircleAvatar(
-            radius: 80.r,
-            backgroundImage: const AssetImage(MyAssets.announcement1),
+            radius: 100.r,
+            backgroundImage: NetworkImage(imagePath ??
+                'https://e7.pngegg.com/pngimages/10/205/png-clipart-computer-icons-error-information-error-angle-triangle-thumbnail.png'),
           ),
         ),
         // const SizedBox(
@@ -24,9 +26,10 @@ class GridViewItem extends StatelessWidget {
         Expanded(
             flex: 2,
             child: Text(
-              'Name',
+              name ?? 'Unknown',
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: AppColors.primaryColor,
+                    color: AppColors.darkBrownColor,
                     fontSize: 18,
                   ),
             ))
