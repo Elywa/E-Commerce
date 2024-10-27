@@ -26,4 +26,8 @@ class MyAssets {
   static const String routeImage = 'assets/images/route_image.png';
 
   static const String splashScreen = 'assets/images/Splash Screen.png';
+  static const String favouriteImageIcon = 'assets/images/favourite image.png';
+  static const String addImageIcon = 'assets/images/🦆 icon _plus circle_.png';
+  static const String starIconImage =
+      'assets/images/🦆 emoji _white medium star_.png';
 }

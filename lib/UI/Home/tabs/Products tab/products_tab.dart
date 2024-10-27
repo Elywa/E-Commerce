@@ -1,3 +1,4 @@
+import 'package:e_commerce/UI/Home/tabs/Products%20tab/widgets/product_item.dart';
 import 'package:e_commerce/UI/Home/widgets/search_row.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
@@ -13,22 +14,34 @@ class ProductsTabView extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(left: 16.w),
         child: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const SizedBox(
-              height: 6,
-            ),
-            const Image(
-              image: AssetImage(MyAssets.routeImage),
-            ),
-            const SizedBox(
-              height: 17.5,
-            ),
-            const SearchRow(),
-            SizedBox(
-              height: 16.h,
-            ),
-          ]),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 6,
+              ),
+              const Image(
+                image: AssetImage(MyAssets.routeImage),
+              ),
+              const SizedBox(
+                height: 17.5,
+              ),
+              const SearchRow(),
+              SizedBox(
+                height: 24.h,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ProductItem(),
+                    ProductItem(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
