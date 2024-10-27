@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce/UI/Home/tabs/favourite%20tab/favourite_tab_view.dart';
 import 'package:e_commerce/UI/Home/tabs/home%20tab/home_tab_view.dart';
-import 'package:e_commerce/UI/Home/tabs/Categories%20tab/categories_tab.dart';
+import 'package:e_commerce/UI/Home/tabs/Products%20tab/products_tab.dart';
 import 'package:e_commerce/UI/Home/tabs/profile%20tab/profile_tab_view.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class HomeViewModelCubit extends Cubit<HomeViewModelState> {
   int selectedIndex = 0;
   List<Widget> tabs = [
     HomeTabView(),
-    const CategoriesTabView(),
+    const ProductsTabView(),
     const FavouriteTabView(),
     const ProfileTabView(),
   ];
