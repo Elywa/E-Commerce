@@ -1,6 +1,5 @@
 import 'package:e_commerce/UI/Home/tabs/Products%20tab/widgets/product_item.dart';
 import 'package:e_commerce/UI/Home/widgets/search_row.dart';
-import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,9 +11,10 @@ class ProductsTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.only(left: 16.w),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
@@ -30,15 +30,20 @@ class ProductsTabView extends StatelessWidget {
               SizedBox(
                 height: 24.h,
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ProductItem(),
-                    ProductItem(),
-                  ],
-                ),
+              GridView.builder(
+                itemCount: 20,
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return const ProductItem();
+                },
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    // crossAxisSpacing: 16,
+                    childAspectRatio: 2.3 / 3,
+                    // mainAxisSpacing: 16,
+                    crossAxisCount: 2),
               ),
             ],
           ),
