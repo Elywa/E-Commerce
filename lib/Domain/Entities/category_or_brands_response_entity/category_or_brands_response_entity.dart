@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+
 import 'package:flutter/material.dart';
 
 import 'category_or_brands_entity.dart';

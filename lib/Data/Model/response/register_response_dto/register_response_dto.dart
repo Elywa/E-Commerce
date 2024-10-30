@@ -4,10 +4,9 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_enti
 import 'user_dto.dart';
 
 class RegisterResponseDto {
-
   final UserDto? user;
   final String? token;
-    final String? message;
+  final String? message;
   final String? statusMsg;
   final ErrorDto? error;
   const RegisterResponseDto({
