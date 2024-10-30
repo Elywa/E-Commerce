@@ -10,11 +10,15 @@ import 'metadata.dart';
 @immutable
 class ProductsResponseDto extends ProductsResponseEntity {
   final Metadata? metadata;
-
-  const ProductsResponseDto({super.results, this.metadata, super.data});
+  final String? message;
+  final String? statusMsg;
+  const ProductsResponseDto(
+      {this.message, this.statusMsg, super.results, this.metadata, super.data});
 
   factory ProductsResponseDto.fromJson(Map<String, dynamic> data) {
     return ProductsResponseDto(
+      message: data['message'] as String?,
+      statusMsg: data['statusMsg'] as String?,
       results: data['results'] as int?,
       metadata: data['metadata'] == null
           ? null

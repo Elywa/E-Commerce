@@ -7,6 +7,7 @@ import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
 import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
+import 'package:e_commerce/Data/Model/response/products_response_dto/products_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
@@ -109,6 +110,22 @@ class ApiManager {
       return right(brands);
     } else {
       return left(ServerError(errMessage: brands.message));
+    }
+  }
+
+  Future<Either<FailuresEntity, ProductsResponseDto>> getProducts() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url = Uri.https(ApiConstans.baseUrl, ApiConstans.getProductsEndPoint);
+    var response = await http.get(url);
+    var products = ProductsResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(products);
+    } else {
+      return left(ServerError(errMessage: products.message));
     }
   }
 }

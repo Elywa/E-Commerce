@@ -4,4 +4,5 @@ class ApiConstans {
   static const String loginEndPoint = '/api/v1/auth/signin';
   static const String getAllCategoriesEndPoint = '/api/v1/categories';
   static const String getAllBrandsEndPoint = '/api/v1/brands';
+  static const String getProductsEndPoint = '/api/v1/products';
 }
