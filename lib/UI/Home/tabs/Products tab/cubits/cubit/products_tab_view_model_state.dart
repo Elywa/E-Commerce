@@ -9,11 +9,11 @@ class ProductsTabViewModelInitialState extends ProductsTabViewModelState {}
 class ProductsTabViewModelLoadingState extends ProductsTabViewModelState {}
 
 class ProductsTabViewModelSuccessState extends ProductsTabViewModelState {
-  final ProductsResponseEntity productsList;
-  ProductsTabViewModelSuccessState({required this.productsList});
+  final ProductsResponseEntity productsResponseEntity;
+  ProductsTabViewModelSuccessState({required this.productsResponseEntity});
 }
 
 class ProductsTabViewModelFailureState extends ProductsTabViewModelState {
-  final String errorMessage;
+  FailuresEntity? errorMessage;
   ProductsTabViewModelFailureState({required this.errorMessage});
 }

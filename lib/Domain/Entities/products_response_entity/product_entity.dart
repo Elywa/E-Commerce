@@ -1,14 +1,12 @@
 import 'dart:convert';
 
 import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_entity.dart';
-import 'package:e_commerce/Domain/Entities/products_response_entity/subcategory_entity.dart';
 import 'package:flutter/foundation.dart';
 
 @immutable
 class ProductEntity {
   final int? sold;
   final List<String>? images;
-  final List<Subcategory>? subcategory;
   final int? ratingsQuantity;
   final String? id;
   final String? title;
@@ -27,7 +25,6 @@ class ProductEntity {
   const ProductEntity({
     this.sold,
     this.images,
-    this.subcategory,
     this.ratingsQuantity,
     this.id,
     this.title,

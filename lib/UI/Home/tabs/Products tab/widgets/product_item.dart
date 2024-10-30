@@ -5,8 +5,17 @@ import 'package:flutter/material.dart';
 class ProductItem extends StatelessWidget {
   const ProductItem({
     super.key,
+    this.imagePath,
+    this.title,
+    this.description,
+    this.price,
+    this.rate,
   });
-
+  final String? imagePath;
+  final String? title;
+  final String? description;
+  final int? price;
+  final double? rate;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,7 +45,8 @@ class ProductItem extends StatelessWidget {
                         topRight: Radius.circular(20),
                       ),
                       child: Image.network(
-                        'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
+                        imagePath ??
+                            'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
                         height: double.infinity,
@@ -69,14 +79,15 @@ class ProductItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Nike Air Jordan',
+                      title ?? 'Unknown',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontSize: 16,
                             color: Colors.black,
                           ),
+                      maxLines: 1,
                     ),
                     Text(
-                      'Nike shoes flexible for women',
+                      description ?? 'Unknown',
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             color: Colors.grey,
                           ),
@@ -87,7 +98,7 @@ class ProductItem extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'EGP 1,200',
+                          '$price',
                           style:
                               Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     color: Colors.black,
@@ -110,7 +121,7 @@ class ProductItem extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'Review (4.6)',
+                          'Review/ $rate',
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!

@@ -8,6 +8,5 @@ abstract class HomeTabRemoteDataSource {
       getCategories();
 
   Future<Either<FailuresEntity, CategoryOrBrandsResponseEntity>> getBrands();
-    Future<Either<FailuresEntity, ProductsResponseEntity>> getProducts();
-
+  Future<Either<FailuresEntity, ProductsResponseEntity>> getProducts();
 }
