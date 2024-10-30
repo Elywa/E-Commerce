@@ -8,6 +8,12 @@ class ProductsTabViewModelInitialState extends ProductsTabViewModelState {}
 
 class ProductsTabViewModelLoadingState extends ProductsTabViewModelState {}
 
-class ProductsTabViewModelSuccessState extends ProductsTabViewModelState {}
+class ProductsTabViewModelSuccessState extends ProductsTabViewModelState {
+  final ProductsResponseEntity productsList;
+  ProductsTabViewModelSuccessState({required this.productsList});
+}
 
-class ProductsTabViewModelFailureState extends ProductsTabViewModelState {}
+class ProductsTabViewModelFailureState extends ProductsTabViewModelState {
+  final String errorMessage;
+  ProductsTabViewModelFailureState({required this.errorMessage});
+}

@@ -12,11 +12,6 @@ class HomeTabRepoImpl implements HomeTabRepo {
   Future<Either<FailuresEntity, CategoryOrBrandsResponseEntity>>
       getCategories() {
     return homeTabRemoteDataSource.getCategories();
-    // return either.fold((failure) {
-    //   return left(failure);
-    // }, (categories) {
-    //   return right(categories);
-    // });
   }
 
   @override
