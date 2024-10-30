@@ -40,10 +40,11 @@ class ProductsTabView extends StatelessWidget {
                   return const ProductItem();
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    // crossAxisSpacing: 16,
-                    childAspectRatio: 2.3 / 3,
-                    // mainAxisSpacing: 16,
-                    crossAxisCount: 2),
+                  // crossAxisSpacing: 16,
+                  childAspectRatio: 2.3 / 3,
+                  // mainAxisSpacing: 16,
+                  crossAxisCount: 2,
+                ),
               ),
             ],
           ),
