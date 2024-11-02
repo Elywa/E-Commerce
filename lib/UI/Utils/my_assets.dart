@@ -30,4 +30,8 @@ class MyAssets {
   static const String addImageIcon = 'assets/images/🦆 icon _plus circle_.png';
   static const String starIconImage =
       'assets/images/🦆 emoji _white medium star_.png';
+  static const String circlePlusIconImage =
+      'assets/images/circle_plus_icon.png';
+  static const String circleSubtractIconImage =
+      'assets/images/🦆 icon _subtract circle minus remove_.png';
 }

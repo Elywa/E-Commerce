@@ -1,4 +1,5 @@
 import 'package:e_commerce/Domain/di.dart';
+import 'package:e_commerce/UI/Home/product_details_view.dart';
 import 'package:e_commerce/UI/Home/tabs/Products%20tab/cubits/cubit/products_tab_view_model_cubit.dart';
 import 'package:e_commerce/UI/Home/tabs/Products%20tab/widgets/product_item.dart';
 import 'package:e_commerce/UI/Home/widgets/search_row.dart';
@@ -74,14 +75,20 @@ class _ProductsTabViewState extends State<ProductsTabView> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return ProductItem(
-                          imagePath:
-                              viewModel.productsList[index].images?[0],
-                          description:
-                              viewModel.productsList[index].description,
-                          price: viewModel.productsList[index].price,
-                          rate: viewModel.productsList[index].ratingsAverage,
-                          title: viewModel.productsList[index].title,
+                        return InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, ProductDetailsView.routeName,
+                                arguments: viewModel.productsList[index]);
+                          },
+                          child: ProductItem(
+                            imagePath: viewModel.productsList[index].images?[0],
+                            description:
+                                viewModel.productsList[index].description,
+                            price: viewModel.productsList[index].price,
+                            rate: viewModel.productsList[index].ratingsAverage,
+                            title: viewModel.productsList[index].title,
+                          ),
                         );
                       },
                       gridDelegate:
