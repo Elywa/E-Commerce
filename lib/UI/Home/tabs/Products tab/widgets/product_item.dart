@@ -81,11 +81,10 @@ class ProductItem extends StatelessWidget {
                   children: [
                     Text(
                       title ?? 'Unknown',
-                      style:
-                          Theme.of(context).textTheme.titleMedium!.copyWith(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
                       maxLines: 1,
                     ),
                     Text(
@@ -101,14 +100,12 @@ class ProductItem extends StatelessWidget {
                       children: [
                         Text(
                           '$price',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 15,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                  ),
                         ),
                         const SizedBox(width: 6),
                         Text(
