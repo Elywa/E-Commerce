@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/Data/Api/api_constans.dart';
 import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
+import 'package:e_commerce/Data/Model/response/add_product_response_dto/add_product_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/products_response_dto/products_response_dto.dart';
@@ -128,4 +129,23 @@ class ApiManager {
       return left(ServerError(errMessage: products.message));
     }
   }
+
+  // Future<Either<FailuresEntity, AddProductResponseDto>> addProduct(
+  //     String productId) async {
+  //   var connectivityResult = await Connectivity().checkConnectivity();
+  //   if (connectivityResult == ConnectivityResult.none) {
+  //     return left(NetworkError(errMessage: 'No internet conncetion!'));
+  //   }
+  //   Uri url =
+  //       Uri.https(ApiConstans.baseUrl, ApiConstans.addProductCartEndPoint);
+  //   var response = await http
+  //       .post(url, headers: {'token': ''}, body: {'productId': productId});
+  //   var products = ProductsResponseDto.fromJson(jsonDecode(response.body));
+
+  //   if (response.statusCode >= 200 && response.statusCode < 300) {
+  //     return right(products);
+  //   } else {
+  //     return left(ServerError(errMessage: products.message));
+  //   }
+  // }
 }
