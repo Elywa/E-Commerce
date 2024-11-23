@@ -1,5 +1,6 @@
 import 'package:e_commerce/Domain/di.dart';
 import 'package:e_commerce/UI/Auth/Register/Cubits/Register%20Cubit/register_cubit_cubit.dart';
+import 'package:e_commerce/UI/Home/Home_View.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Custom_Button.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Route_Title.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/text_form_field.dart';
@@ -44,6 +45,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   content: Text('Register Success'),
                 ),
               );
+              Navigator.pushReplacementNamed(context, HomeView.homeViewId);
             } else if (state is RegisterCubitFailure) {
               isLoading = false;
               debugPrint(state.errMessage);

@@ -12,6 +12,7 @@ import 'package:e_commerce/Data/Model/response/products_response_dto/products_re
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
+import 'package:e_commerce/UI/Utils/Shared_Preference.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -136,16 +137,20 @@ class ApiManager {
   //   if (connectivityResult == ConnectivityResult.none) {
   //     return left(NetworkError(errMessage: 'No internet conncetion!'));
   //   }
+
+  //   var token = SharedPrefrence.getData(key: 'token');
   //   Uri url =
   //       Uri.https(ApiConstans.baseUrl, ApiConstans.addProductCartEndPoint);
-  //   var response = await http
-  //       .post(url, headers: {'token': ''}, body: {'productId': productId});
-  //   var products = ProductsResponseDto.fromJson(jsonDecode(response.body));
+  //   var response = await http.post(url,
+  //       headers: {'token': token!.toString() }, body: {'productId': productId});
+  //   var addResponse = AddProductResponseDto.fromJson(jsonDecode(response.body));
 
   //   if (response.statusCode >= 200 && response.statusCode < 300) {
-  //     return right(products);
+  //     return right(addResponse);
   //   } else {
-  //     return left(ServerError(errMessage: products.message));
+  //     return left(
+  //       ServerError(errMessage: addResponse.message),
+  //     );
   //   }
   // }
 }

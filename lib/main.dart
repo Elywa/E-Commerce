@@ -4,15 +4,33 @@ import 'package:e_commerce/UI/Home/Home_View.dart';
 import 'package:e_commerce/UI/Home/product_details_view.dart';
 import 'package:e_commerce/UI/Splash/splash_view.dart';
 import 'package:e_commerce/UI/Utils/app_theme.dart';
+import 'package:e_commerce/UI/Utils/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(const App());
+void main() async {
+  WidgetsFlutterBinding
+      .ensureInitialized(); // prepare everythimg before main if wanted.
+  await MySharedPrefrence.init();
+  var user = MySharedPrefrence.getData(key: 'token');
+  String route;
+  if (user == null) {
+    route = LoginView.loginViewId;
+  } else {
+    route = HomeView.homeViewId;
+  }
+  debugPrint(
+      '==================================== $route and token is : $user ================ ');
+  runApp(
+    MyApp(
+      route: route,
+    ),
+  );
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class MyApp extends StatelessWidget {
+  MyApp({super.key, required this.route});
+  String route;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +38,7 @@ class App extends StatelessWidget {
       designSize: const Size(430, 932),
       builder: (context, child) {
         return MaterialApp(
-          initialRoute: HomeView.homeViewId,
-          // initialRoute: SplashView.splashId,
+          initialRoute: route,
           debugShowCheckedModeBanner: false,
           routes: {
             SplashView.splashId: (context) => const SplashView(),

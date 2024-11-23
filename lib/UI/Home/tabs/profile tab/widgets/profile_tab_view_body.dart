@@ -37,15 +37,26 @@ class ProfileTabViewBody extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 8.h),
-                child: Text(
-                  'Welcome, Ahmed',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: Colors.black),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8.h),
+                    child: Text(
+                      'Welcome, Ahmed',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: Colors.black),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.logout,
+                        size: 20,
+                      ))
+                ],
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 40.h),

@@ -2,16 +2,18 @@ import 'package:e_commerce/Domain/di.dart';
 import 'package:e_commerce/UI/Auth/Login/cubit/login_cubit.dart';
 import 'package:e_commerce/UI/Auth/Login/cubit/login_state.dart';
 import 'package:e_commerce/UI/Auth/Register/register_view.dart';
+import 'package:e_commerce/UI/Home/Home_View.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Custom_Button.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Route_Title.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/text_form_field.dart';
+import 'package:e_commerce/UI/Utils/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginViewBody extends StatefulWidget {
-  LoginViewBody({super.key});
+  const LoginViewBody({super.key});
 
   @override
   State<LoginViewBody> createState() => _LoginViewBodyState();
@@ -24,7 +26,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return BlocListener(
       bloc: viewModel,
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginLoadingState) {
           isLoading = true;
         } else if (state is LoginSuccessState) {
@@ -34,6 +36,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               content: Text('Login Success'),
             ),
           );
+          MySharedPrefrence.saveData(
+              key: 'token', value: state.authResultEntity.token);
+
+          debugPrint(
+              '==============================================   Login Success with token ${state.authResultEntity.token}=====================');
+          Navigator.of(context).pushReplacementNamed(HomeView.homeViewId);
         } else if (state is LoginFailureState) {
           isLoading = false;
           ScaffoldMessenger.of(context).showSnackBar(
