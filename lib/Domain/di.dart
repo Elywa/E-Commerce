@@ -12,6 +12,7 @@ import 'package:e_commerce/Domain/Repositories/data%20source/auth_remote_data_so
 import 'package:e_commerce/Domain/Repositories/data%20source/home_tab_remote_data_source.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/auth_repo.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/home_tab_repo.dart';
+import 'package:e_commerce/Domain/Use%20cases/add_cart_product_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_products_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_brands_use_case.dart';
@@ -20,6 +21,10 @@ import 'package:e_commerce/Domain/Use%20cases/register_use_case.dart';
 
 RegisterUseCase injectRegisterUseCase() {
   return RegisterUseCase(authRepository: injectAuthRepository());
+}
+
+AddCartProductUseCase injectAddCartProductUseCase() {
+  return AddCartProductUseCase(homeTabRepo: injectHomeTabRepo());
 }
 
 GetAllProductsUseCase injectGetAllProductsUseCase() {

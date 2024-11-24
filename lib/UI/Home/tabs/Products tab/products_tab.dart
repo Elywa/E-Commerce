@@ -17,7 +17,8 @@ class ProductsTabView extends StatefulWidget {
 
 class _ProductsTabViewState extends State<ProductsTabView> {
   ProductsTabViewModelCubit viewModel = ProductsTabViewModelCubit(
-      getAllProductsUseCase: injectGetAllProductsUseCase());
+      getAllProductsUseCase: injectGetAllProductsUseCase(),
+      addCartProductUseCase: injectAddCartProductUseCase());
   @override
   // void initState() {
   //    viewModel.getAllProducts();
