@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:e_commerce/UI/Auth/Login/login_view.dart';
+import 'package:e_commerce/UI/Home/Home_View.dart';
+import 'package:e_commerce/UI/Utils/shared_preference.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,16 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, LoginView.loginViewId);
+      var user = MySharedPrefrence.getData(key: 'token');
+      String route;
+      if (user == null) {
+        route = LoginView.loginViewId;
+      } else {
+        route = HomeView.homeViewId;
+      }
+      debugPrint(
+          '==================================== $route and token is : $user ================ ');
+      Navigator.pushReplacementNamed(context, route);
     });
     return SafeArea(
       child: Scaffold(

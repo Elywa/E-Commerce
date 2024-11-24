@@ -26,6 +26,10 @@ class MySharedPrefrence {
     }
   }
 
+  static Future<bool> removeData({required String key}) {
+    return sharedPreference.remove(key);
+  }
+
   static Object? getData({required String key}) {
     if (sharedPreference == null) {
       debugPrint("SharedPreferences is not initialized");

@@ -4,6 +4,7 @@ import 'package:e_commerce/UI/Home/Home_View.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Custom_Button.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/Route_Title.dart';
 import 'package:e_commerce/UI/Utils/shared%20widgets/text_form_field.dart';
+import 'package:e_commerce/UI/Utils/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -45,6 +46,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   content: Text('Register Success'),
                 ),
               );
+              MySharedPrefrence.saveData(
+                  key: 'token', value: state.response.token);
               Navigator.pushReplacementNamed(context, HomeView.homeViewId);
             } else if (state is RegisterCubitFailure) {
               isLoading = false;

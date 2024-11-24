@@ -12,25 +12,23 @@ void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // prepare everythimg before main if wanted.
   await MySharedPrefrence.init();
-  var user = MySharedPrefrence.getData(key: 'token');
-  String route;
-  if (user == null) {
-    route = LoginView.loginViewId;
-  } else {
-    route = HomeView.homeViewId;
-  }
-  debugPrint(
-      '==================================== $route and token is : $user ================ ');
+  // var user = MySharedPrefrence.getData(key: 'token');
+  // String route;
+  // if (user == null) {
+  //   route = LoginView.loginViewId;
+  // } else {
+  //   route = HomeView.homeViewId;
+  // }
+  // debugPrint(
+  //     '==================================== $route and token is : $user ================ ');
   runApp(
-    MyApp(
-      route: route,
-    ),
+    MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key, required this.route});
-  String route;
+  MyApp({super.key});
+  // String route;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +36,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(430, 932),
       builder: (context, child) {
         return MaterialApp(
-          initialRoute: route,
+          initialRoute: SplashView.splashId,
           debugShowCheckedModeBanner: false,
           routes: {
             SplashView.splashId: (context) => const SplashView(),

@@ -1,7 +1,10 @@
+import 'package:e_commerce/UI/Auth/Login/login_view.dart';
 import 'package:e_commerce/UI/Home/tabs/profile%20tab/widgets/profile_item_text_field.dart';
+import 'package:e_commerce/UI/Utils/shared_preference.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileTabViewBody extends StatelessWidget {
   ProfileTabViewBody({super.key});
@@ -51,7 +54,11 @@ class ProfileTabViewBody extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        MySharedPrefrence.removeData(key: 'token');
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, LoginView.loginViewId, (route) => false);
+                      },
                       icon: const Icon(
                         Icons.logout,
                         size: 20,
