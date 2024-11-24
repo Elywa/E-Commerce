@@ -134,11 +134,14 @@ class ProductItem extends StatelessWidget {
                           size: 14,
                         ),
                         const Spacer(),
-                        CircleAvatar(
-                          radius: 15,
-                          backgroundColor: AppColors.whiteColor,
-                          child: Image.asset(
-                            MyAssets.addImageIcon,
+                        InkWell(
+                          onTap: () {},
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: AppColors.whiteColor,
+                            child: Image.asset(
+                              MyAssets.addImageIcon,
+                            ),
                           ),
                         ),
                       ],

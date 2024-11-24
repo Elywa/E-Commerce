@@ -38,9 +38,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           );
           MySharedPrefrence.saveData(
               key: 'token', value: state.authResultEntity.token);
+          var user = MySharedPrefrence.getData(key: 'token');
 
           debugPrint(
-              '==============================================   Login Success with token ${state.authResultEntity.token}=====================');
+              '==============================================   Login Success with token ${user.toString()}=====================');
           Navigator.of(context).pushReplacementNamed(HomeView.homeViewId);
         } else if (state is LoginFailureState) {
           isLoading = false;
