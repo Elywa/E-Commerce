@@ -131,26 +131,31 @@ class ApiManager {
     }
   }
 
-  // Future<Either<FailuresEntity, AddProductResponseDto>> addProduct(
-  //     String productId) async {
-  //   var connectivityResult = await Connectivity().checkConnectivity();
-  //   if (connectivityResult == ConnectivityResult.none) {
-  //     return left(NetworkError(errMessage: 'No internet conncetion!'));
-  //   }
+  Future<Either<FailuresEntity, AddProductResponseDto>> addProduct(
+      String productId) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
 
-  //   var token = SharedPrefrence.getData(key: 'token');
-  //   Uri url =
-  //       Uri.https(ApiConstans.baseUrl, ApiConstans.addProductCartEndPoint);
-  //   var response = await http.post(url,
-  //       headers: {'token': token!.toString() }, body: {'productId': productId});
-  //   var addResponse = AddProductResponseDto.fromJson(jsonDecode(response.body));
+    var token = MySharedPrefrence.getData(key: 'token');
+    Uri url =
+        Uri.https(ApiConstans.baseUrl, ApiConstans.addProductCartEndPoint);
+    var response = await http.post(url,
+        headers: {'token': token!.toString()}, body: {'productId': productId});
+    var addResponse = AddProductResponseDto.fromJson(jsonDecode(response.body));
 
-  //   if (response.statusCode >= 200 && response.statusCode < 300) {
-  //     return right(addResponse);
-  //   } else {
-  //     return left(
-  //       ServerError(errMessage: addResponse.message),
-  //     );
-  //   }
-  // }
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(addResponse);
+    } else if (response.statusCode == 401) {
+      return left(
+        ServerError(errMessage: addResponse.message),
+      );
+    }
+    {
+      return left(
+        ServerError(errMessage: addResponse.message),
+      );
+    }
+  }
 }
