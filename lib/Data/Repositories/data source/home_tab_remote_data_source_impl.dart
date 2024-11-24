@@ -43,8 +43,13 @@ class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
   }
 
   @override
-  Future<Either<FailuresEntity, AddProductResponseEntity>> addCartProduct(String productId) {
-    // TODO: implement addCartProduct
-    throw UnimplementedError();
+  Future<Either<FailuresEntity, AddProductResponseEntity>> addCartProduct(
+      String productId) async {
+    var either = await apiManager.addProduct(productId);
+    return either.fold((failure) {
+      return left(failure);
+    }, (response) {
+      return right(response);
+    });
   }
 }

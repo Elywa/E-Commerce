@@ -26,8 +26,8 @@ class HomeTabRepoImpl implements HomeTabRepo {
   }
 
   @override
-  Future<Either<FailuresEntity, AddProductResponseEntity>> addCartProduct(String productId) {
-    // TODO: implement addCartProduct
-    throw UnimplementedError();
+  Future<Either<FailuresEntity, AddProductResponseEntity>> addCartProduct(
+      String productId) {
+    return homeTabRemoteDataSource.addCartProduct(productId);
   }
 }
