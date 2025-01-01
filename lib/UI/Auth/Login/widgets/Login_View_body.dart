@@ -37,11 +37,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ),
           );
           MySharedPrefrence.saveData(
-              key: 'token', value: state.authResultEntity.token);
-          var user = MySharedPrefrence.getData(key: 'token');
+              key: 'Token', value: state.authResultEntity.token);
+          // var user = MySharedPrefrence.getData(key: 'Token');
 
-          debugPrint(
-              '==============================================   Login Success with token ${user.toString()}=====================');
+          // debugPrint(
+          //     '==============================================   Login Success with token ${user.toString()}=====================');
           Navigator.of(context).pushReplacementNamed(HomeView.homeViewId);
         } else if (state is LoginFailureState) {
           isLoading = false;
@@ -66,11 +66,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   const SizedBox(
                     height: 25,
                   ),
-                  const RouteTitle(),
+                  SizedBox(
+                    height: MediaQuery.sizeOf(context).height * .1,
+                  ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.h),
                     child: Text(
-                      'Welcome Back To Route',
+                      'Welcome Back',
                       textAlign: TextAlign.start,
                       style: Theme.of(context)
                           .textTheme

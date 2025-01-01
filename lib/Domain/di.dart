@@ -5,13 +5,13 @@
 
 import 'package:e_commerce/Data/Api/api_manager.dart';
 import 'package:e_commerce/Data/Repositories/data%20source/auth_remote_data_source_impl.dart';
-import 'package:e_commerce/Data/Repositories/data%20source/home_tab_remote_data_source_impl.dart';
+import 'package:e_commerce/Data/Repositories/data%20source/home_remote_data_source_impl.dart';
 import 'package:e_commerce/Data/Repositories/repositories/auth_repo_impl.dart';
 import 'package:e_commerce/Data/Repositories/repositories/home_tab_repo_impl.dart';
 import 'package:e_commerce/Domain/Repositories/data%20source/auth_remote_data_source.dart';
-import 'package:e_commerce/Domain/Repositories/data%20source/home_tab_remote_data_source.dart';
+import 'package:e_commerce/Domain/Repositories/data%20source/home_remote_data_source.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/auth_repo.dart';
-import 'package:e_commerce/Domain/Repositories/repositories/home_tab_repo.dart';
+import 'package:e_commerce/Domain/Repositories/repositories/home_repo.dart';
 import 'package:e_commerce/Domain/Use%20cases/add_cart_product_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_products_use_case.dart';
@@ -43,12 +43,12 @@ GetAllCategoriesUseCase injectGetAllCategoriesUseCase() {
   return GetAllCategoriesUseCase(homeTabRepo: injectHomeTabRepo());
 }
 
-HomeTabRepo injectHomeTabRepo() {
+HomeRepo injectHomeTabRepo() {
   return HomeTabRepoImpl(
       homeTabRemoteDataSource: injectHomeTabRemoteDataSorce());
 }
 
-HomeTabRemoteDataSource injectHomeTabRemoteDataSorce() {
+HomeRemoteDataSource injectHomeTabRemoteDataSorce() {
   return HomeTabRemoteDataSourceImpl(apiManager: ApiManager.getInstance());
 }
 

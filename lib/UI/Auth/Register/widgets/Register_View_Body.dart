@@ -47,7 +47,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 ),
               );
               MySharedPrefrence.saveData(
-                  key: 'token', value: state.response.token);
+                  key: 'Token', value: state.response.token);
               Navigator.pushReplacementNamed(context, HomeView.homeViewId);
             } else if (state is RegisterCubitFailure) {
               isLoading = false;
@@ -66,7 +66,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 key: viewModel.formKey,
                 child: Column(
                   children: [
-                    const RouteTitle(),
+                    const SizedBox(
+                      height: 25,
+                    ),
                     TextFieldItem(
                       hintText: 'enter your full name',
                       label: 'Full Name',

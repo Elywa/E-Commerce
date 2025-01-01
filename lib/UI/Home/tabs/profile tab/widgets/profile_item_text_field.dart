@@ -26,7 +26,7 @@ class ProfileItemTextField extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(color: Colors.black, fontSize: 20),
+                  .copyWith(color: AppColors.primaryColor, fontSize: 20),
             ),
           ),
           TextFormField(

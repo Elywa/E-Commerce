@@ -1,17 +1,17 @@
 import 'add_product_entity.dart';
 
-class AddCartDataEntity {
+class AddCartEntity {
   String? id;
   String? cartOwner;
-  List<AddProductEntity>? products;
+  List<AddProductEntity>? product;
 
   int? v;
   int? totalCartPrice;
 
-  AddCartDataEntity({
+  AddCartEntity({
     this.id,
     this.cartOwner,
-    this.products,
+    this.product,
     this.v,
     this.totalCartPrice,
   });

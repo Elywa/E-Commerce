@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/Data/Api/api_manager.dart';
-import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_product_response_entity.dart';
+import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_cart_response_entity.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_response_entity.dart';
 import 'package:e_commerce/Domain/Entities/products_response_entity/products_response_entity.dart';
-import 'package:e_commerce/Domain/Repositories/data%20source/home_tab_remote_data_source.dart';
+import 'package:e_commerce/Domain/Repositories/data%20source/home_remote_data_source.dart';
 
-class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
+class HomeTabRemoteDataSourceImpl implements HomeRemoteDataSource {
   ApiManager apiManager;
   HomeTabRemoteDataSourceImpl({required this.apiManager});
 
@@ -43,9 +43,9 @@ class HomeTabRemoteDataSourceImpl implements HomeTabRemoteDataSource {
   }
 
   @override
-  Future<Either<FailuresEntity, AddProductResponseEntity>> addCartProduct(
+  Future<Either<FailuresEntity, AddCartResponseEntity>> addCartProduct(
       String productId) async {
-    var either = await apiManager.addProduct(productId);
+    var either = await apiManager.addToCart(productId);
     return either.fold((failure) {
       return left(failure);
     }, (response) {

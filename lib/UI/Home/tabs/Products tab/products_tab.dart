@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductsTabView extends StatefulWidget {
-  ProductsTabView({super.key});
+ const  ProductsTabView({super.key});
 
   @override
   State<ProductsTabView> createState() => _ProductsTabViewState();
@@ -29,10 +29,9 @@ class _ProductsTabViewState extends State<ProductsTabView> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: BlocProvider<ProductsTabViewModelCubit>(
-          create: (context) =>viewModel..getAllProducts(),
+          create: (context) => viewModel..getAllProducts(),
           child:
               BlocBuilder<ProductsTabViewModelCubit, ProductsTabViewModelState>(
-            
             builder: (context, state) {
               if (state is ProductsTabViewModelLoadingState) {
                 return const Center(
@@ -61,12 +60,7 @@ class _ProductsTabViewState extends State<ProductsTabView> {
                       const SizedBox(
                         height: 6,
                       ),
-                      const Image(
-                        image: AssetImage(MyAssets.routeImage),
-                      ),
-                      const SizedBox(
-                        height: 17.5,
-                      ),
+                
                       const SearchRow(),
                       SizedBox(
                         height: 24.h,
@@ -85,6 +79,7 @@ class _ProductsTabViewState extends State<ProductsTabView> {
                                   arguments: viewModel.productsList[index]);
                             },
                             child: ProductItem(
+                              id: viewModel.productsList[index].id,
                               imagePath:
                                   viewModel.productsList[index].images?[0],
                               description:

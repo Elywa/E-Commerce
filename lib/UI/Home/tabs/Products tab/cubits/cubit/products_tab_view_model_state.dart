@@ -21,7 +21,7 @@ class ProductsTabViewModelFailureState extends ProductsTabViewModelState {
 class AddProductToCartLoadingState extends ProductsTabViewModelState {}
 
 class AddProductToCartSuccessState extends ProductsTabViewModelState {
-  final AddProductResponseEntity addProductResponseEntity;
+  final AddCartResponseEntity addProductResponseEntity;
   AddProductToCartSuccessState({required this.addProductResponseEntity});
 }
 

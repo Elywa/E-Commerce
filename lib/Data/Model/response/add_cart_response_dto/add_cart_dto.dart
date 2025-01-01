@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:e_commerce/Domain/Entities/add_product_response_entity/data_entity.dart';
+import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_cart_entity.dart';
 
-import 'product_dto.dart';
+import 'add_product_dto.dart';
 
-class AddCartDto extends AddCartDataEntity {
+class AddCartDto extends AddCartEntity {
   AddCartDto({
     super.id,
     super.cartOwner,
-    super.products,
+    super.product,
     super.v,
     super.totalCartPrice,
   });
@@ -16,11 +16,10 @@ class AddCartDto extends AddCartDataEntity {
   factory AddCartDto.fromJson(Map<String, dynamic> data) => AddCartDto(
         id: data['_id'] as String?,
         cartOwner: data['cartOwner'] as String?,
-        products: (data['products'] as List<dynamic>?)
-            ?.map((e) => ProductDto.fromJson(e as Map<String, dynamic>))
+        product: (data['products'] as List<dynamic>?)
+            ?.map((e) => AddProductDto.fromJson(e as Map<String, dynamic>))
             .toList(),
         v: data['__v'] as int?,
         totalCartPrice: data['totalCartPrice'] as int?,
       );
-
 }

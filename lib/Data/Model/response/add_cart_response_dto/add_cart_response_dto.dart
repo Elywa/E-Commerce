@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_product_response_entity.dart';
+import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_cart_response_entity.dart';
 
-import 'data_dto.dart';
+import 'add_cart_dto.dart';
 
-class AddProductResponseDto extends AddProductResponseEntity {
+class AddCartResponseDto extends AddCartResponseEntity {
   String? statusMsg;
-  AddProductResponseDto(
+  AddCartResponseDto(
       {super.status,
       super.message,
       super.numOfCartItems,
@@ -14,8 +14,8 @@ class AddProductResponseDto extends AddProductResponseEntity {
       super.data,
       this.statusMsg});
 
-  factory AddProductResponseDto.fromJson(Map<String, dynamic> data) {
-    return AddProductResponseDto(
+  factory AddCartResponseDto.fromJson(Map<String, dynamic> data) {
+    return AddCartResponseDto(
       status: data['status'] as String?,
       statusMsg: data['statusMsg'] as String?,
       message: data['message'] as String?,

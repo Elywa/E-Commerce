@@ -1,22 +1,27 @@
+import 'package:e_commerce/Data/Model/response/add_cart_response_dto/add_cart_response_dto.dart';
+import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_cart_response_entity.dart';
 import 'package:e_commerce/UI/Home/product_details_view.dart';
+import 'package:e_commerce/UI/Home/tabs/Products%20tab/cubits/cubit/products_tab_view_model_cubit.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({
-    super.key,
-    this.imagePath,
-    this.title,
-    this.description,
-    this.price,
-    this.rate,
-  });
+  const ProductItem(
+      {super.key,
+      this.imagePath,
+      this.title,
+      this.description,
+      this.price,
+      this.rate,
+      this.id});
   final String? imagePath;
   final String? title;
   final String? description;
   final int? price;
   final double? rate;
+  final String? id;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -135,7 +140,12 @@ class ProductItem extends StatelessWidget {
                         ),
                         const Spacer(),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            ProductsTabViewModelCubit.get(context)
+                                .addProductToCart(productId: id ?? "");
+
+                            
+                          },
                           child: CircleAvatar(
                             radius: 15,
                             backgroundColor: AppColors.whiteColor,

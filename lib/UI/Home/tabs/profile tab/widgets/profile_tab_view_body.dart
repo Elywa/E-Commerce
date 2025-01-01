@@ -1,5 +1,6 @@
 import 'package:e_commerce/UI/Auth/Login/login_view.dart';
 import 'package:e_commerce/UI/Home/tabs/profile%20tab/widgets/profile_item_text_field.dart';
+import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/shared_preference.dart';
 
 import 'package:flutter/material.dart';
@@ -29,17 +30,17 @@ class ProfileTabViewBody extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: 6.h, right: 348.w, bottom: 16.h),
-                child: const SizedBox(
-                  width: 66,
-                  height: 22,
-                  child: Image(
-                    image: AssetImage('assets/images/route_image.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.only(top: 6.h, right: 348.w, bottom: 16.h),
+              //   child: const SizedBox(
+              //     width: 66,
+              //     height: 22,
+              //     child: Image(
+              //       image: AssetImage('assets/images/route_image.png'),
+              //       fit: BoxFit.fill,
+              //     ),
+              //   ),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -47,15 +48,13 @@ class ProfileTabViewBody extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 8.h),
                     child: Text(
                       'Welcome, Ahmed',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(color: Colors.black),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: AppColors.primaryColor, fontSize: 20),
                     ),
                   ),
                   IconButton(
                       onPressed: () {
-                        MySharedPrefrence.removeData(key: 'token');
+                        MySharedPrefrence.removeData(key: 'Token');
                         Navigator.pushNamedAndRemoveUntil(
                             context, LoginView.loginViewId, (route) => false);
                       },

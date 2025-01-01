@@ -12,7 +12,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
-      var user = MySharedPrefrence.getData(key: 'token');
+      var user = MySharedPrefrence.getData(key: 'Token');
       String route;
       if (user == null) {
         route = LoginView.loginViewId;
@@ -26,8 +26,8 @@ class SplashView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Image.asset(
-          'assets/images/Splash Screen.png',
-          fit: BoxFit.cover,
+          'assets/images/splash.jpg',
+          fit: BoxFit.fill,
           width: double.infinity,
           height: double.infinity,
         ),

@@ -1,18 +1,17 @@
-import 'data_entity.dart';
+import 'add_cart_entity.dart';
 
-class AddProductResponseEntity {
+class AddCartResponseEntity {
   String? status;
   String? message;
   int? numOfCartItems;
   String? cartId;
-  AddCartDataEntity? data;
-  
-  AddProductResponseEntity({
+  AddCartEntity? data;
+
+  AddCartResponseEntity({
     this.status,
     this.message,
     this.numOfCartItems,
     this.cartId,
     this.data,
-
   });
 }
