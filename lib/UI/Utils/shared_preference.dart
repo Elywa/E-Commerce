@@ -31,10 +31,7 @@ class MySharedPrefrence {
   }
 
   static Object? getData({required String key}) {
-    // if (sharedPreference == null) {
-    //   debugPrint("SharedPreferences is not initialized");
-    //   return null;
-    // }
+
     return sharedPreference.get(key);
   }
 }

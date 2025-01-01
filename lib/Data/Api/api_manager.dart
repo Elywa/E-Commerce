@@ -138,12 +138,12 @@ class ApiManager {
       return left(NetworkError(errMessage: 'No internet conncetion!'));
     }
 
-    var token = MySharedPrefrence.getData(key: 'Token');
-    debugPrint("+++++++ token is $token");
+    var user =  MySharedPrefrence.getData(key: 'Token');
+    debugPrint("========================  token is ${user.toString()}");
     Uri url =
         Uri.https(ApiConstans.baseUrl, ApiConstans.addProductCartEndPoint);
     var response = await http.post(url,
-        headers: {'token': token!.toString()}, body: {'productId': productId});
+        headers: {'token': user.toString()}, body: {'productId': productId});
     var addResponse = AddCartResponseDto.fromJson(jsonDecode(response.body));
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -152,8 +152,7 @@ class ApiManager {
       return left(
         ServerError(errMessage: addResponse.message),
       );
-    }else
-    {
+    } else {
       return left(
         ServerError(errMessage: addResponse.message),
       );
