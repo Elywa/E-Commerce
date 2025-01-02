@@ -10,10 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:hive_flutter/adapters.dart';
+
 void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // prepare everythimg before main if wanted.
   Bloc.observer = MyBlocObserver();
+ await Hive.initFlutter();
+  await Hive.openBox('token');
   await MySharedPrefrence.init();
   // var user = MySharedPrefrence.getData(key: 'token');
   // String route;

@@ -1,3 +1,5 @@
+import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_response_entity.dart';
+import 'package:e_commerce/Domain/Entities/auth_response_entity/auth_result_entity.dart';
 import 'package:e_commerce/Domain/di.dart';
 import 'package:e_commerce/UI/Auth/Login/cubit/login_cubit.dart';
 import 'package:e_commerce/UI/Auth/Login/cubit/login_state.dart';
@@ -10,6 +12,8 @@ import 'package:e_commerce/UI/Utils/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -38,10 +42,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           );
           MySharedPrefrence.saveData(
               key: 'Token', value: state.authResultEntity.token);
+          // var token = Hive.box<AuthResultEntity>('user');
+          // token.put('token', state.authResultEntity.token);
+          var box = Hive.box('token');
+          box.put('token', state.authResultEntity.token);
+          var token = box.get('token');
           var user = MySharedPrefrence.getData(key: 'Token');
 
           debugPrint(
-              '==============================================   Login Success with token ${user.toString()}=====================');
+              '==============================================   Login Success with token $token=====================');
           Navigator.of(context).pushReplacementNamed(HomeView.homeViewId);
         } else if (state is LoginFailureState) {
           isLoading = false;

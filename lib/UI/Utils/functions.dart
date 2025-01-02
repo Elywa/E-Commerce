@@ -2,6 +2,7 @@ import 'package:e_commerce/UI/Home/cubits/Home%20Cubit/home_view_model_cubit.dar
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
 
 SafeArea buildCustomBottomNavigationBar(
     BuildContext context, HomeViewModelCubit viewModel) {
@@ -55,6 +56,39 @@ SafeArea buildCustomBottomNavigationBar(
           ],
         ),
       ),
+    ),
+  );
+}
+
+void showErrorSnackBar(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Row(
+        children: [
+          // const Icon(Icons.done, color: Colors.green, size: 28), // Gold icon
+          // const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              message,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ),
+      backgroundColor: const Color.fromARGB(
+          255, 42, 173, 233), // Dark purple to match the app
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(seconds: 4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      elevation: 6,
     ),
   );
 }

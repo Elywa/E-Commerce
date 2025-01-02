@@ -14,6 +14,7 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/UI/Utils/Shared_Preference.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class ApiManager {
@@ -137,13 +138,13 @@ class ApiManager {
     if (connectivityResult == ConnectivityResult.none) {
       return left(NetworkError(errMessage: 'No internet conncetion!'));
     }
-
-    var user =  MySharedPrefrence.getData(key: 'Token');
-    debugPrint("========================  token is ${user.toString()}");
+    var token = Hive.box('token').get('token');
+    // var user = MySharedPrefrence.getData(key: 'Token');
+    debugPrint("========================  token is $token");
     Uri url =
         Uri.https(ApiConstans.baseUrl, ApiConstans.addProductCartEndPoint);
-    var response = await http.post(url,
-        headers: {'token': user.toString()}, body: {'productId': productId});
+    var response = await http
+        .post(url, headers: {'token': token}, body: {'productId': productId});
     var addResponse = AddCartResponseDto.fromJson(jsonDecode(response.body));
 
     if (response.statusCode >= 200 && response.statusCode < 300) {

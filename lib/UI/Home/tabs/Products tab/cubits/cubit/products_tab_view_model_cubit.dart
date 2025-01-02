@@ -47,6 +47,10 @@ class ProductsTabViewModelCubit extends Cubit<ProductsTabViewModelState> {
       numOfCartItems = successResponse.numOfCartItems!.toInt();
       debugPrint(
           "======================= Product Added Successfully and number is : $numOfCartItems ================");
+
+      debugPrint(
+          "======================= Product Added Successfully and number is : $numOfCartItems ================");
+
       emit(AddProductToCartSuccessState(
           addProductResponseEntity: successResponse));
     });
