@@ -34,4 +34,7 @@ class MyAssets {
       'assets/images/circle_plus_icon.png';
   static const String circleSubtractIconImage =
       'assets/images/🦆 icon _subtract circle minus remove_.png';
+
+  static const String networkImage =
+      'https://m.media-amazon.com/images/I/91NLs-Q9BWL._AC_UY1100_.jpg';
 }
