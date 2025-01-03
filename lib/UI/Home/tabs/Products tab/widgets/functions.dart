@@ -14,7 +14,7 @@ SingleChildScrollView buildProductSuccessStateTab(dynamic viewModel) {
           const SizedBox(
             height: 6,
           ),
-          const SearchRow(),
+           SearchRow(viewModel:viewModel ,),
           SizedBox(
             height: 24.h,
           ),

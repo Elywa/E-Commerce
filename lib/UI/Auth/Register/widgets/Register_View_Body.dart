@@ -8,6 +8,7 @@ import 'package:e_commerce/UI/Utils/shared_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hive/hive.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class RegisterViewBody extends StatefulWidget {
@@ -41,13 +42,15 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               isLoading = false;
               debugPrint(
                   'Success =============================================');
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Register Success'),
-                ),
-              );
-              MySharedPrefrence.saveData(
-                  key: 'Token', value: state.response.token);
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //   const SnackBar(
+              //     content: Text('Register Success'),
+              //   ),
+              // );
+                      var box = Hive.box('token');
+          box.put('token', state.response.token);
+              // MySharedPrefrence.saveData(
+              //     key: 'Token', value: state.response.token);
               Navigator.pushReplacementNamed(context, HomeView.homeViewId);
             } else if (state is RegisterCubitFailure) {
               isLoading = false;

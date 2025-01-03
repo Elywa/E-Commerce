@@ -1,13 +1,16 @@
+import 'package:e_commerce/UI/Home/cart_items_view.dart';
+import 'package:e_commerce/UI/Home/tabs/Products%20tab/cubits/cubit/products_tab_view_model_cubit.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchRow extends StatelessWidget {
-  const SearchRow({
+  SearchRow({
     super.key,
+    this.viewModel,
   });
-
+  ProductsTabViewModelCubit? viewModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,15 +34,23 @@ class SearchRow extends StatelessWidget {
             ),
           ),
         ),
-        IconButton(
-            onPressed: () {},
-            style: const ButtonStyle(
-              iconColor: WidgetStatePropertyAll(AppColors.primaryColor),
-            ),
-            icon: const Icon(
-              Icons.shopping_cart_outlined,
-              size: 30,
-            ))
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: Badge(
+            label: Text(viewModel?.numOfCartItems.toString() ?? '0'),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartItemsView.routeName);
+                },
+                style: const ButtonStyle(
+                  iconColor: WidgetStatePropertyAll(AppColors.primaryColor),
+                ),
+                icon: const Icon(
+                  Icons.shopping_cart_outlined,
+                  size: 30,
+                )),
+          ),
+        )
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:e_commerce/UI/Auth/Login/login_view.dart';
 import 'package:e_commerce/UI/Auth/Register/register_view.dart';
 import 'package:e_commerce/UI/Home/Home_View.dart';
+import 'package:e_commerce/UI/Home/cart_items_view.dart';
 import 'package:e_commerce/UI/Home/product_details_view.dart';
 import 'package:e_commerce/UI/Splash/splash_view.dart';
 import 'package:e_commerce/UI/Utils/app_theme.dart';
@@ -16,7 +17,7 @@ void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // prepare everythimg before main if wanted.
   Bloc.observer = MyBlocObserver();
- await Hive.initFlutter();
+  await Hive.initFlutter();
   await Hive.openBox('token');
   await MySharedPrefrence.init();
   // var user = MySharedPrefrence.getData(key: 'token');
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
             RegisterView.registerViewId: (context) => const RegisterView(),
             HomeView.homeViewId: (contex) => const HomeView(),
             ProductDetailsView.routeName: (context) =>
-                const ProductDetailsView()
+                const ProductDetailsView(),
+            CartItemsView.routeName: (context) => const CartItemsView(),
           },
           theme: AppTheme.mainTheme,
           themeMode: ThemeMode.light,

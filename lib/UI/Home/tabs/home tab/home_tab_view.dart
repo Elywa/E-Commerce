@@ -1,4 +1,5 @@
 import 'package:e_commerce/Domain/di.dart';
+import 'package:e_commerce/UI/Home/tabs/Products%20tab/cubits/cubit/products_tab_view_model_cubit.dart';
 import 'package:e_commerce/UI/Home/tabs/home%20tab/cubits/cubit/home_tab_cubit.dart';
 import 'package:e_commerce/UI/Home/widgets/announcements_widgets.dart';
 import 'package:e_commerce/UI/Home/widgets/custom_grid_view.dart';
@@ -44,7 +45,7 @@ class HomeTabView extends StatelessWidget {
                   // const SizedBox(
                   //   height: 17.5,
                   // ),
-                  const SearchRow(),
+                   SearchRow(),
                   SizedBox(
                     height: 16.h,
                   ),

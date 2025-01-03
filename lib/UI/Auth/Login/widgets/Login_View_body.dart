@@ -35,19 +35,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           isLoading = true;
         } else if (state is LoginSuccessState) {
           isLoading = false;
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Login Success'),
-            ),
-          );
-          MySharedPrefrence.saveData(
-              key: 'Token', value: state.authResultEntity.token);
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   const SnackBar(
+          //     content: Text('Login Success'),
+          //   ),
+          // );
+          // MySharedPrefrence.saveData(
+          //     key: 'Token', value: state.authResultEntity.token);
           // var token = Hive.box<AuthResultEntity>('user');
           // token.put('token', state.authResultEntity.token);
           var box = Hive.box('token');
           box.put('token', state.authResultEntity.token);
           var token = box.get('token');
-          var user = MySharedPrefrence.getData(key: 'Token');
+          // var user = MySharedPrefrence.getData(key: 'Token');
 
           debugPrint(
               '==============================================   Login Success with token $token=====================');
