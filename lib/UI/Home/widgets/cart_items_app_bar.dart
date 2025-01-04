@@ -1,33 +1,9 @@
-import 'package:e_commerce/UI/Utils/colors.dart';
+ import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
-class CartItemsAppBar extends StatelessWidget {
-  const CartItemsAppBar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 20,
-            color: AppColors.primaryColor,
-          ),
-        ),
-        Text(
-          "Cart",
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(color: AppColors.primaryColor),
-        ),
+AppBar buildCartItemsViewAppBar(BuildContext context) {
+    return AppBar(
+      actions: [
         IconButton(
           onPressed: () {},
           icon: const Icon(
@@ -37,6 +13,24 @@ class CartItemsAppBar extends StatelessWidget {
           ),
         ),
       ],
+      leading: IconButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: const Icon(
+          Icons.arrow_back,
+          size: 25,
+          color: AppColors.primaryColor,
+        ),
+      ),
+      centerTitle: true,
+      title: Text(
+        "Cart",
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge!
+            .copyWith(color: AppColors.primaryColor),
+      ),
     );
   }
-}
+
