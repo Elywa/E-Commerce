@@ -1,4 +1,4 @@
-import 'package:e_commerce/Domain/Entities/products_response_entity/product_entity.dart';
+import 'package:e_commerce/Domain/Entities/products_response_entity/get_product_entity.dart';
 import 'package:e_commerce/UI/Home/widgets/product_details_view_appbar.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/my_assets.dart';
@@ -14,7 +14,7 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)!.settings.arguments as ProductEntity;
+    var args = ModalRoute.of(context)!.settings.arguments as GetProductEntity;
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(

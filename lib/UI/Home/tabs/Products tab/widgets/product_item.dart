@@ -143,8 +143,6 @@ class ProductItem extends StatelessWidget {
                           onTap: () {
                             ProductsTabViewModelCubit.get(context)
                                 .addProductToCart(productId: id ?? "");
-
-                            
                           },
                           child: CircleAvatar(
                             radius: 15,

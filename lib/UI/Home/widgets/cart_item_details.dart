@@ -1,4 +1,3 @@
-
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -65,8 +64,7 @@ class CartItemDetails extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
                         onPressed: () {},
@@ -100,4 +98,3 @@ class CartItemDetails extends StatelessWidget {
     );
   }
 }
-

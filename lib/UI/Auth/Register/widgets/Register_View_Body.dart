@@ -47,8 +47,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               //     content: Text('Register Success'),
               //   ),
               // );
-                      var box = Hive.box('token');
-          box.put('token', state.response.token);
+              var box = Hive.box('token');
+              box.put('token', state.response.token);
               // MySharedPrefrence.saveData(
               //     key: 'Token', value: state.response.token);
               Navigator.pushReplacementNamed(context, HomeView.homeViewId);

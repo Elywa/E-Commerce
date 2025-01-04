@@ -4,7 +4,7 @@ import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/ca
 import 'package:flutter/foundation.dart';
 
 @immutable
-class ProductEntity {
+class GetProductEntity {
   final int? sold;
   final List<String>? images;
   final int? ratingsQuantity;
@@ -22,7 +22,7 @@ class ProductEntity {
   final int? priceAfterDiscount;
   final List<dynamic>? availableColors;
 
-  const ProductEntity({
+  const GetProductEntity({
     this.sold,
     this.images,
     this.ratingsQuantity,

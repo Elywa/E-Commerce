@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_dto.dart';
-import 'package:e_commerce/Domain/Entities/products_response_entity/product_entity.dart';
+import 'package:e_commerce/Domain/Entities/products_response_entity/get_product_entity.dart';
 import 'package:flutter/foundation.dart';
 
 @immutable
-class ProductDto extends ProductEntity {
+class ProductDto extends GetProductEntity {
   const ProductDto({
     super.sold,
     super.images,

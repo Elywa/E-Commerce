@@ -45,7 +45,7 @@ class HomeTabView extends StatelessWidget {
                   // const SizedBox(
                   //   height: 17.5,
                   // ),
-                   SearchRow(),
+                  SearchRow(),
                   SizedBox(
                     height: 16.h,
                   ),

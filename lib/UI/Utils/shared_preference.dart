@@ -31,7 +31,6 @@ class MySharedPrefrence {
   }
 
   static Object? getData({required String key}) {
-
     return sharedPreference.get(key);
   }
 }

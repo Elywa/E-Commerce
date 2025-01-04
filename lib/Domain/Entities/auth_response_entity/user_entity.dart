@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-
-
 class UserEntity {
   final String? name;
 
