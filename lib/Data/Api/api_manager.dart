@@ -7,6 +7,7 @@ import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
 import 'package:e_commerce/Data/Model/response/add_cart_response_dto/add_cart_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_response_dto.dart';
+import 'package:e_commerce/Data/Model/response/get_cart_response_dto/get_cart_response_dto/get_cart_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/products_response_dto/products_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
@@ -157,6 +158,24 @@ class ApiManager {
       return left(
         ServerError(errMessage: addResponse.message),
       );
+    }
+  }
+
+  Future<Either<FailuresEntity, GetCartResponseDto>> getCartProducts() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url = Uri.https(ApiConstans.baseUrl, ApiConstans.getCartEndPoint);
+    var response =
+        await http.get(url, headers: {'token': Hive.box('token').get('token')});
+    var getCartResponse =
+        GetCartResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(getCartResponse);
+    } else {
+      return left(ServerError(errMessage: getCartResponse.message));
     }
   }
 }
