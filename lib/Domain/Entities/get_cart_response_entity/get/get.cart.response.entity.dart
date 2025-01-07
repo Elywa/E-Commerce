@@ -1,4 +1,4 @@
-import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_entity.dart';
+import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_dart_cart_entity.dart';
 
 class GetCartResponseEntity {
   String? status;
