@@ -1,4 +1,4 @@
-import 'get_product_cart_entity.dart';
+import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/product.cart.response.entity.dart';
 
 class GetDataCartEntity {
   String? id;
