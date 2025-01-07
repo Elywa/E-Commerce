@@ -1,4 +1,4 @@
-import 'package:e_commerce/UI/Home/cart_items_view.dart';
+import 'package:e_commerce/UI/Home/tabs/cart/cart_items_view.dart';
 import 'package:e_commerce/UI/Home/tabs/Products%20tab/cubits/cubit/products_tab_view_model_cubit.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:e_commerce/UI/Utils/functions.dart';

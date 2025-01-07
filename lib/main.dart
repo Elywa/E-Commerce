@@ -1,7 +1,7 @@
 import 'package:e_commerce/UI/Auth/Login/login_view.dart';
 import 'package:e_commerce/UI/Auth/Register/register_view.dart';
 import 'package:e_commerce/UI/Home/Home_View.dart';
-import 'package:e_commerce/UI/Home/cart_items_view.dart';
+import 'package:e_commerce/UI/Home/tabs/cart/cart_items_view.dart';
 import 'package:e_commerce/UI/Home/product_details_view.dart';
 import 'package:e_commerce/UI/Splash/splash_view.dart';
 import 'package:e_commerce/UI/Utils/app_theme.dart';
