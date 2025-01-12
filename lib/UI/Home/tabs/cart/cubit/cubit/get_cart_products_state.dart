@@ -14,3 +14,16 @@ class GetCartProductsFailure extends GetCartProductsState {
   final FailuresEntity error;
   GetCartProductsFailure({required this.error});
 }
+
+
+class DeleteCartProductLoading extends GetCartProductsState {}
+
+class DeleteCartProductSuccess extends GetCartProductsState {
+  final GetCartResponseEntity cartProducts;
+  DeleteCartProductSuccess({required this.cartProducts});
+}
+
+class DeleteCartProductFailure extends GetCartProductsState {
+  final FailuresEntity error;
+  DeleteCartProductFailure({required this.error});
+}

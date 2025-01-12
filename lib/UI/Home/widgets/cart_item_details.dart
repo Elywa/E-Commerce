@@ -1,4 +1,5 @@
 import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_cart_entity.dart';
+import 'package:e_commerce/UI/Home/tabs/cart/cubit/cubit/get_cart_products_cubit.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,10 @@ class CartItemDetails extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  GetCartProductsCubit.get(context)
+                      .deleteCartProduct(product.product!.id ?? '');
+                },
                 icon: const Icon(
                   Icons.delete,
                   color: AppColors.primaryColor,

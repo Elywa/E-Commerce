@@ -60,7 +60,7 @@ SafeArea buildCustomBottomNavigationBar(
   );
 }
 
-void showErrorSnackBar(BuildContext context, String message) {
+void showErrorSnackBar(BuildContext context, String message , {double verical = 12} ) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Row(
@@ -87,7 +87,7 @@ void showErrorSnackBar(BuildContext context, String message) {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      margin:  EdgeInsets.symmetric(horizontal: 16, vertical: verical),
       elevation: 6,
     ),
   );
