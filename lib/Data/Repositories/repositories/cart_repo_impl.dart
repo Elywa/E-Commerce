@@ -15,7 +15,6 @@ class CartRepoImpl implements CartRepo {
   @override
   Future<Either<FailuresEntity, GetCartResponseEntity>> deleteCartProduct(
       String productId) {
-    // TODO: implement deleteCartProduct
-    throw UnimplementedError();
+    return cartRemoteDataSourceImpl.deleteCartProduct(productId);
   }
 }

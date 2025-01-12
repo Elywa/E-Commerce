@@ -178,4 +178,24 @@ class ApiManager {
       return left(ServerError(errMessage: getCartResponse.message));
     }
   }
+
+  
+  Future<Either<FailuresEntity, GetCartResponseDto>> deleteCartProduct(String productId) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url = Uri.https(ApiConstans.baseUrl, '/api/v1/cart/$productId');
+    var token =  Hive.box('token').get('token');
+    var response =
+        await http.delete(url, headers: {'token':token});
+    var deleteCartProductResponse =
+        GetCartResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(deleteCartProductResponse);
+    } else {
+      return left(ServerError(errMessage: deleteCartProductResponse.message));
+    }
+  }
 }

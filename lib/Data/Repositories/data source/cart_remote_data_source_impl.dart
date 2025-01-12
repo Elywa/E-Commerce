@@ -17,10 +17,15 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       return right(success);
     });
   }
-  
+
   @override
-  Future<Either<FailuresEntity, GetCartResponseEntity>> deleteCartProduct(String productId) {
-    // TODO: implement deleteCartProduct
-    throw UnimplementedError();
+  Future<Either<FailuresEntity, GetCartResponseEntity>> deleteCartProduct(
+      String productId) async {
+    var either = await apiManager.deleteCartProduct(productId);
+    return either.fold((failure) {
+      return left(failure);
+    }, (success) {
+      return right(success);
+    });
   }
 }
