@@ -1,6 +1,6 @@
 import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_cart_entity.dart';
 import 'package:e_commerce/Domain/di.dart';
-import 'package:e_commerce/UI/Home/tabs/cart/cubit/cubit/get_cart_products_cubit.dart';
+import 'package:e_commerce/UI/Home/tabs/cart/cubit/cubit/cart_products_cubit.dart';
 import 'package:e_commerce/UI/Home/widgets/cart_items_app_bar.dart';
 import 'package:e_commerce/UI/Home/widgets/cart_view_Item.dart';
 import 'package:e_commerce/UI/Home/widgets/checkout_box.dart';
@@ -17,20 +17,23 @@ class CartItemsViewBody extends StatefulWidget {
 }
 
 class _CartItemsViewBodyState extends State<CartItemsViewBody> {
-  GetCartProductsCubit viewModel = GetCartProductsCubit(
-      injectGetCartProductsUseCase(), injectDeleteCartProductUseCase());
+  CartProductsCubit viewModel = CartProductsCubit(
+      injectGetCartProductsUseCase(),
+      injectDeleteCartProductUseCase(),
+      injectUpdateCartProductUseCase());
 
   int itemCount = 0;
 
   List<GetProductCartEntity> products = [];
 
   int? totalPrice = 0;
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GetCartProductsCubit>(
+    return BlocProvider<CartProductsCubit>(
       create: (context) => viewModel..getCartProducts(),
-      child: BlocConsumer<GetCartProductsCubit, GetCartProductsState>(
+      child: BlocConsumer<CartProductsCubit, CartProductsState>(
         listener: (context, state) {
           if (state is DeleteCartProductFailure) {
             showErrorSnackBar(context, "Failed to delete product. Try again.");
@@ -58,7 +61,10 @@ class _CartItemsViewBodyState extends State<CartItemsViewBody> {
           if (state is GetCartProductsSuccess ||
               state is DeleteCartProductSuccess ||
               state is DeleteCartProductFailure ||
-              state is DeleteCartProductLoading) {
+              state is DeleteCartProductLoading ||
+              state is UpdateCartProductSuccess ||
+              state is UpdateCartProductFailure ||
+              state is UpdateCartProductLoading) {
             return Column(
               children: [
                 Expanded(
@@ -67,61 +73,18 @@ class _CartItemsViewBodyState extends State<CartItemsViewBody> {
                     itemCount: itemCount,
                     itemBuilder: (context, index) {
                       return CartViewItem(
-                        product: products[index],
+                        product:
+                            CartProductsCubit.get(context).cartItems[index],
                       );
                     },
                   ),
                 ),
                 CheckoutBox(
                   totalPrice: totalPrice,
-                )
+                ),
               ],
             );
-          }
-
-          // else if (state is DeleteCartProductSuccess) {
-          //   return Column(
-          //     children: [
-          //       Expanded(
-          //         child: ListView.builder(
-          //           physics: const BouncingScrollPhysics(),
-          //           itemCount: state.cartProducts.data!.products!.length,
-          //           itemBuilder: (context, index) {
-          //             return CartViewItem(
-          //               product: state.cartProducts.data!.products![index],
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //       CheckoutBox(
-          //         totalPrice: state.cartProducts.data!.totalCartPrice,
-          //       )
-          //     ],
-          //   );
-          // }
-
-          // else if (state is DeleteCartProductFailure) {
-          //   return Column(
-          //     children: [
-          //       Expanded(
-          //         child: ListView.builder(
-          //           physics: const BouncingScrollPhysics(),
-          //           itemCount: state.cartProducts.data!.products!.length,
-          //           itemBuilder: (context, index) {
-          //             return CartViewItem(
-          //               product: state.cartProducts.data!.products![index],
-          //             );
-          //           },
-          //         ),
-          //       ),
-          //       CheckoutBox(
-          //         totalPrice: state.cartProducts.data!.totalCartPrice,
-          //       )
-          //     ],
-          //   );
-          // }
-
-          else if (state is GetCartProductsFailure) {
+          } else if (state is GetCartProductsFailure) {
             return Center(
               child: Text(
                 state.error.errMessage!,

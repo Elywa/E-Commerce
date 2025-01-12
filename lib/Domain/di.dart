@@ -23,9 +23,14 @@ import 'package:e_commerce/Domain/Use%20cases/get_brands_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_cart_products_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/login_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/register_use_case.dart';
+import 'package:e_commerce/Domain/Use%20cases/update_cart_product_use_case.dart';
 
 RegisterUseCase injectRegisterUseCase() {
   return RegisterUseCase(authRepository: injectAuthRepository());
+}
+
+UpdateCartProductUseCase injectUpdateCartProductUseCase() {
+  return UpdateCartProductUseCase(cartRepo: injectCartRepo());
 }
 
 GetCartProductsUseCase injectGetCartProductsUseCase() {

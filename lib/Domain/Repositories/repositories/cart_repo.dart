@@ -3,6 +3,9 @@ import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.
 import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get.cart.response.entity.dart';
 
 abstract class CartRepo {
- Future<Either<FailuresEntity , GetCartResponseEntity>> getCartProducts();
-  Future<Either<FailuresEntity , GetCartResponseEntity>> deleteCartProduct(String productId);
+  Future<Either<FailuresEntity, GetCartResponseEntity>> getCartProducts();
+  Future<Either<FailuresEntity, GetCartResponseEntity>> deleteCartProduct(
+      String productId);
+  Future<Either<FailuresEntity, GetCartResponseEntity>> updateCartProduct(
+      String productId, int count);
 }

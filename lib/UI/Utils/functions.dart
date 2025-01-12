@@ -60,7 +60,8 @@ SafeArea buildCustomBottomNavigationBar(
   );
 }
 
-void showErrorSnackBar(BuildContext context, String message , {double verical = 12} ) {
+void showErrorSnackBar(BuildContext context, String message,
+    {double verical = 12}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Row(
@@ -83,11 +84,11 @@ void showErrorSnackBar(BuildContext context, String message , {double verical = 
       backgroundColor: const Color.fromARGB(
           255, 42, 173, 233), // Dark purple to match the app
       behavior: SnackBarBehavior.floating,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      margin:  EdgeInsets.symmetric(horizontal: 16, vertical: verical),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: verical),
       elevation: 6,
     ),
   );

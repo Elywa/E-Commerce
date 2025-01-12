@@ -1,5 +1,5 @@
 import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_cart_entity.dart';
-import 'package:e_commerce/UI/Home/tabs/cart/cubit/cubit/get_cart_products_cubit.dart';
+import 'package:e_commerce/UI/Home/tabs/cart/cubit/cubit/cart_products_cubit.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +9,7 @@ class CartItemDetails extends StatelessWidget {
     required this.product,
   });
   final GetProductCartEntity product;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -31,7 +32,7 @@ class CartItemDetails extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  GetCartProductsCubit.get(context)
+                  CartProductsCubit.get(context)
                       .deleteCartProduct(product.product!.id ?? '');
                 },
                 icon: const Icon(
@@ -79,7 +80,14 @@ class CartItemDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          int counter = product.count!.toInt();
+                          counter--;
+                          print(
+                              "------------- counter ( - ) is $counter ---------- ");
+                          CartProductsCubit.get(context)
+                              .updateCartProduct(product.product!.id!, counter);
+                        },
                         icon: const Icon(
                           Icons.remove_circle_outline,
                           color: Colors.white,
@@ -93,7 +101,14 @@ class CartItemDetails extends StatelessWidget {
                             .copyWith(color: Colors.white),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          int counter = product.count!.toInt();
+                          counter++;
+                          print(
+                              "------------- counter ( + ) is $counter ---------- ");
+                          CartProductsCubit.get(context)
+                              .updateCartProduct(product.product!.id!, counter);
+                        },
                         icon: const Icon(
                           Icons.add_circle_outline,
                           color: Colors.white,
