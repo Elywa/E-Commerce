@@ -16,6 +16,7 @@ import 'package:e_commerce/Domain/Repositories/repositories/auth_repo.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/cart_repo.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/home_repo.dart';
 import 'package:e_commerce/Domain/Use%20cases/add_cart_product_use_case.dart';
+import 'package:e_commerce/Domain/Use%20cases/delete_cart_product_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_products_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_brands_use_case.dart';
@@ -29,6 +30,10 @@ RegisterUseCase injectRegisterUseCase() {
 
 GetCartProductsUseCase injectGetCartProductsUseCase() {
   return GetCartProductsUseCase(cartRepo: injectCartRepo());
+}
+
+DeleteCartProductUseCase injectDeleteCartProductUseCase() {
+  return DeleteCartProductUseCase(cartRepo: injectCartRepo());
 }
 
 CartRepo injectCartRepo() {
