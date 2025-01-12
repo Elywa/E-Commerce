@@ -2,10 +2,11 @@ import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
 
 class CartItemImage extends StatelessWidget {
-  const CartItemImage({
+   CartItemImage({
     super.key,
+    this.image,
   });
-
+   String? image;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,8 +14,8 @@ class CartItemImage extends StatelessWidget {
       height: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-          image: NetworkImage(MyAssets.networkImage),
+        image: DecorationImage(
+          image: NetworkImage(image ?? MyAssets.networkImage),
           fit: BoxFit.fill,
         ),
       ),

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 class CheckoutBox extends StatelessWidget {
   const CheckoutBox({
     super.key,
+    this.totalPrice,
   });
+  final int? totalPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class CheckoutBox extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  '2000 Rs',
+                  '$totalPrice Rs',
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!

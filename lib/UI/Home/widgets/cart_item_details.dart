@@ -1,11 +1,13 @@
+import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_cart_entity.dart';
 import 'package:e_commerce/UI/Utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class CartItemDetails extends StatelessWidget {
   const CartItemDetails({
     super.key,
+    required this.product,
   });
-
+  final GetProductCartEntity product;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -15,12 +17,16 @@ class CartItemDetails extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Title',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(color: AppColors.primaryColor),
+              Expanded(
+                child: Text(
+                  product.product!.title!,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: AppColors.primaryColor),
+                ),
               ),
               IconButton(
                 onPressed: () {},
@@ -35,7 +41,7 @@ class CartItemDetails extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "Count:",
+            "Count: ${product.count}",
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
@@ -49,12 +55,14 @@ class CartItemDetails extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'EGP',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: AppColors.primaryColor),
+                Expanded(
+                  child: Text(
+                    '${product.price} EGP',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(color: AppColors.primaryColor),
+                  ),
                 ),
                 Container(
                   width: MediaQuery.sizeOf(context).width * .4,
@@ -74,7 +82,7 @@ class CartItemDetails extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '1',
+                        ' ${product.count}',
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!

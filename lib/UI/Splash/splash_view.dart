@@ -5,6 +5,7 @@ import 'package:e_commerce/UI/Home/Home_View.dart';
 import 'package:e_commerce/UI/Utils/shared_preference.dart';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -12,15 +13,17 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
-      var user = MySharedPrefrence.getData(key: 'Token');
+      var box = Hive.box('token');
+      var token = box.get('token');
+
       String route;
-      if (user == null) {
+      if (token == null) {
         route = LoginView.loginViewId;
       } else {
         route = HomeView.homeViewId;
       }
       debugPrint(
-          '==================================== $route and token is : $user ================ ');
+          '==================================== $route and token is : $token ================ ');
       Navigator.pushReplacementNamed(context, route);
     });
     return SafeArea(
