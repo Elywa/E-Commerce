@@ -17,4 +17,10 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       return right(success);
     });
   }
+  
+  @override
+  Future<Either<FailuresEntity, GetCartResponseEntity>> deleteCartProduct() {
+    // TODO: implement deleteCartProduct
+    throw UnimplementedError();
+  }
 }

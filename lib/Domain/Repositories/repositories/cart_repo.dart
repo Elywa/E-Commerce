@@ -4,4 +4,5 @@ import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get.cart
 
 abstract class CartRepo {
  Future<Either<FailuresEntity , GetCartResponseEntity>> getCartProducts();
+  Future<Either<FailuresEntity , GetCartResponseEntity>> deleteCartProduct();
 }
