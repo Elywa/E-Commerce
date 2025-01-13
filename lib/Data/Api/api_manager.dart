@@ -6,6 +6,7 @@ import 'package:e_commerce/Data/Api/api_constans.dart';
 import 'package:e_commerce/Data/Model/request/login_request.dart';
 import 'package:e_commerce/Data/Model/request/register_request.dart';
 import 'package:e_commerce/Data/Model/response/add_cart_response_dto/add_cart_response_dto.dart';
+import 'package:e_commerce/Data/Model/response/add_product_to_favourite_response_dto/add_product_to_favourite_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/category_or_brands_response_dto/category_or_brands_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/get_cart_response_dto/get_cart_response_dto/get_cart_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
@@ -215,6 +216,35 @@ class ApiManager {
       return right(updateCartProductResponse);
     } else {
       return left(ServerError(errMessage: updateCartProductResponse.message));
+    }
+  }
+
+  Future<Either<FailuresEntity, AddProductToFavouriteResponseDto>>
+      addProductToFavourite(String productId) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    var token = Hive.box('token').get('token');
+    // var user = MySharedPrefrence.getData(key: 'Token');
+    debugPrint("========================  token is $token");
+    Uri url = Uri.https(
+        ApiConstans.baseUrl, ApiConstans.addProductToFavouriteEndPoint);
+    var response = await http
+        .post(url, headers: {'token': token}, body: {'productId': productId});
+    var addResponse =
+        AddProductToFavouriteResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(addResponse);
+    } else if (response.statusCode == 401) {
+      return left(
+        ServerError(errMessage: addResponse.message),
+      );
+    } else {
+      return left(
+        ServerError(errMessage: addResponse.message),
+      );
     }
   }
 }
