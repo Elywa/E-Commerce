@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 class CartItemsView extends StatelessWidget {
   const CartItemsView({super.key});
   static String routeName = 'CartItemsView';
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: buildCartItemsViewAppBar(context),
-      body:  CartItemsViewBody(),
+      body: CartItemsViewBody(),
     ));
   }
 }

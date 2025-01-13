@@ -2,11 +2,11 @@ import 'package:e_commerce/UI/Utils/my_assets.dart';
 import 'package:flutter/material.dart';
 
 class CartItemImage extends StatelessWidget {
-   CartItemImage({
+  CartItemImage({
     super.key,
     this.image,
   });
-   String? image;
+  String? image;
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -7,7 +7,7 @@ class GetCartProductsUseCase {
   CartRepo cartRepo;
   GetCartProductsUseCase({required this.cartRepo});
 
-  Future<Either<FailuresEntity , GetCartResponseEntity>> invoke() {
+  Future<Either<FailuresEntity, GetCartResponseEntity>> invoke() {
     return cartRepo.getCartProducts();
   }
 }
