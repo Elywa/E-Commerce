@@ -39,12 +39,7 @@ class HomeTabView extends StatelessWidget {
                   const SizedBox(
                     height: 6,
                   ),
-                  // const Image(
-                  //   image: AssetImage(MyAssets.routeImage),
-                  // ),
-                  // const SizedBox(
-                  //   height: 17.5,
-                  // ),
+           
                   SearchRow(),
                   SizedBox(
                     height: 16.h,
