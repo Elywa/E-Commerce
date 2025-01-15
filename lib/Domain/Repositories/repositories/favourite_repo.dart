@@ -8,5 +8,5 @@ abstract class FavouriteRepo {
       getWishListProducts();
 
   Future<Either<FailuresEntity, RemoveFavouriteProductResponseEntity>>
-      removeFavouriteProduct();
+      removeFavouriteProduct(String productId);
 }

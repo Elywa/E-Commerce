@@ -13,6 +13,7 @@ import 'package:e_commerce/Data/Model/response/get_user_wishlist_products_respon
 import 'package:e_commerce/Data/Model/response/login_response_dto/login_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/products_response_dto/products_response_dto.dart';
 import 'package:e_commerce/Data/Model/response/register_response_dto/register_response_dto.dart';
+import 'package:e_commerce/Data/Model/response/remove_favourite_product_response_dto/remove_favourite_product_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/UI/Utils/Shared_Preference.dart';
@@ -268,6 +269,26 @@ class ApiManager {
       return right(products);
     } else {
       return left(ServerError(errMessage: products.message));
+    }
+  }
+
+  Future<Either<FailuresEntity, RemoveFavouriteProductResponseDto>>
+      deleteFavouriteProduct(String productId) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return left(NetworkError(errMessage: 'No internet conncetion!'));
+    }
+    Uri url = Uri.https(ApiConstans.baseUrl, '/api/v1/wishlist/$productId');
+    var token = Hive.box('token').get('token');
+    var response = await http.delete(url, headers: {'token': token});
+    var deleteFavouriteProductResponse =
+        RemoveFavouriteProductResponseDto.fromJson(jsonDecode(response.body));
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      return right(deleteFavouriteProductResponse);
+    } else {
+      return left(
+          ServerError(errMessage: deleteFavouriteProductResponse.message));
     }
   }
 }

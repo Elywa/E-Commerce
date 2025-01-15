@@ -8,5 +8,5 @@ abstract class FavouriteRemoteDataSource {
       getWishListProducts();
 
   Future<Either<FailuresEntity, RemoveFavouriteProductResponseEntity>>
-      removeFavouriteProduct();
+      removeFavouriteProduct(String productId);
 }
