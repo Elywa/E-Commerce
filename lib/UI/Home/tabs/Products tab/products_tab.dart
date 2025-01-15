@@ -20,7 +20,8 @@ class ProductsTabView extends StatefulWidget {
 class _ProductsTabViewState extends State<ProductsTabView> {
   ProductsTabViewModelCubit viewModel = ProductsTabViewModelCubit(
       getAllProductsUseCase: injectGetAllProductsUseCase(),
-      addCartProductUseCase: injectAddCartProductUseCase());
+      addCartProductUseCase: injectAddCartProductUseCase(),
+      addProductToFavouriteUseCase: injectAddProductToFavouriteUseCase());
   @override
   // void initState() {
   //    viewModel.getAllProducts();
@@ -35,10 +36,17 @@ class _ProductsTabViewState extends State<ProductsTabView> {
           child: BlocConsumer<ProductsTabViewModelCubit,
               ProductsTabViewModelState>(
             listener: (context, state) {
-              if (state is AddProductToCartSuccessState) {
+              if (state is AddProductToCartSuccessState ||
+                  state is FavouriteTabSuccess) {
                 showErrorSnackBar(
                   context,
                   "Product Added Successfully",
+                );
+              }
+              if (state is FavouriteTabFailure) {
+                showErrorSnackBar(
+                  context,
+                  "Oops there is an error!",
                 );
               }
             },
@@ -50,7 +58,10 @@ class _ProductsTabViewState extends State<ProductsTabView> {
               } else if (state is ProductsTabViewModelFailureState) {
                 return buildErrorWidget(context, state);
               } else if (state is ProductsTabViewModelSuccessState ||
-                  state is AddProductToCartLoadingState) {
+                  state is AddProductToCartLoadingState ||
+                  state is FavouriteTabLoading ||
+                  state is FavouriteTabSuccess ||
+                  state is FavouriteTabFailure) {
                 return buildProductSuccessStateTab(viewModel);
               } else if (state is AddProductToCartSuccessState) {
                 return buildProductSuccessStateTab(viewModel);

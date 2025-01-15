@@ -58,12 +58,16 @@ class ProductItem extends StatelessWidget {
                         height: double.infinity,
                       ),
                     ),
-                    const Positioned(
+                    Positioned(
                       right: 6,
                       top: 7,
                       child: InkWell(
-                        onTap: null,
-                        child: CircleAvatar(
+                        onTap: () {
+                          ProductsTabViewModelCubit.get(context)
+                              .addProductToFavourite(id ?? '');
+                          
+                        },
+                        child:const CircleAvatar(
                           backgroundColor: AppColors.whiteColor,
                           radius: 15,
                           child: Image(

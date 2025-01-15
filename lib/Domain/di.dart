@@ -16,6 +16,7 @@ import 'package:e_commerce/Domain/Repositories/repositories/auth_repo.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/cart_repo.dart';
 import 'package:e_commerce/Domain/Repositories/repositories/home_repo.dart';
 import 'package:e_commerce/Domain/Use%20cases/add_cart_product_use_case.dart';
+import 'package:e_commerce/Domain/Use%20cases/add_product_to_favourite_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/delete_cart_product_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_categories_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_products_use_case.dart';
@@ -27,6 +28,10 @@ import 'package:e_commerce/Domain/Use%20cases/update_cart_product_use_case.dart'
 
 RegisterUseCase injectRegisterUseCase() {
   return RegisterUseCase(authRepository: injectAuthRepository());
+}
+
+AddProductToFavouriteUseCase injectAddProductToFavouriteUseCase() {
+  return AddProductToFavouriteUseCase(homeRepo: injectHomeTabRepo());
 }
 
 UpdateCartProductUseCase injectUpdateCartProductUseCase() {
@@ -45,9 +50,16 @@ CartRepo injectCartRepo() {
   return CartRepoImpl(
       cartRemoteDataSourceImpl: injectCartRemoteDataSourceImpl());
 }
+// ApiManager injectApiManager(){
+// return
+// }
 
 CartRemoteDataSourceImpl injectCartRemoteDataSourceImpl() {
   return CartRemoteDataSourceImpl(apiManager: ApiManager.getInstance());
+}
+
+HomeTabRemoteDataSourceImpl injectHomeTabRemoteDataSourceImpl() {
+  return HomeTabRemoteDataSourceImpl(apiManager: ApiManager.getInstance());
 }
 
 AddCartProductUseCase injectAddCartProductUseCase() {
@@ -72,7 +84,7 @@ GetAllCategoriesUseCase injectGetAllCategoriesUseCase() {
 
 HomeRepo injectHomeTabRepo() {
   return HomeTabRepoImpl(
-      homeTabRemoteDataSource: injectHomeTabRemoteDataSorce());
+      homeTabRemoteDataSource: injectHomeTabRemoteDataSourceImpl());
 }
 
 HomeRemoteDataSource injectHomeTabRemoteDataSorce() {

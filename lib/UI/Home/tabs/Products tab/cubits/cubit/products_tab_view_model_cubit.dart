@@ -2,10 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/Data/Model/response/products_response_dto/products_response_dto.dart';
 import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_cart_response_entity.dart';
+import 'package:e_commerce/Domain/Entities/add_product_to_favourite_response_entity/add_product_to_favourite_response_entity.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:e_commerce/Domain/Entities/products_response_entity/get_product_entity.dart';
 import 'package:e_commerce/Domain/Entities/products_response_entity/products_response_entity.dart';
 import 'package:e_commerce/Domain/Use%20cases/add_cart_product_use_case.dart';
+import 'package:e_commerce/Domain/Use%20cases/add_product_to_favourite_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_all_products_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +18,13 @@ part 'products_tab_view_model_state.dart';
 class ProductsTabViewModelCubit extends Cubit<ProductsTabViewModelState> {
   GetAllProductsUseCase getAllProductsUseCase;
   AddCartProductUseCase addCartProductUseCase;
+  AddProductToFavouriteUseCase addProductToFavouriteUseCase;
   List<GetProductEntity> productsList = [];
   int numOfCartItems = 0;
   ProductsTabViewModelCubit(
       {required this.getAllProductsUseCase,
-      required this.addCartProductUseCase})
+      required this.addCartProductUseCase,
+      required this.addProductToFavouriteUseCase})
       : super(ProductsTabViewModelInitialState());
 
   static ProductsTabViewModelCubit get(context) {
@@ -54,5 +58,20 @@ class ProductsTabViewModelCubit extends Cubit<ProductsTabViewModelState> {
       emit(AddProductToCartSuccessState(
           addProductResponseEntity: successResponse));
     });
+  }
+
+  void addProductToFavourite(String productId) async {
+    emit(FavouriteTabLoading());
+    final response = await addProductToFavouriteUseCase.invoke(productId);
+    response.fold(
+      (failure) {
+        emit(FavouriteTabFailure(error: failure));
+      },
+      (success) {
+        emit(FavouriteTabSuccess(addProductToFavouriteResponseEntity: success));
+        debugPrint(
+            "Product with id : $productId added successfully !! -------------- ");
+      },
+    );
   }
 }

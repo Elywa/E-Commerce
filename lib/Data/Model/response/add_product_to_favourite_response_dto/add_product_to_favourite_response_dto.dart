@@ -11,7 +11,9 @@ class AddProductToFavouriteResponseDto
       status: json['status'] as String?,
       statusMsg: json['statusMsg'] as String?,
       message: json['message'] as String?,
-      data: json['data'] as List<String>?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((item) => item.toString())
+          .toList(),
     );
   }
 }

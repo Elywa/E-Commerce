@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce/Data/Repositories/data%20source/home_remote_data_source_impl.dart';
 import 'package:e_commerce/Domain/Entities/add_product_response_entity/add_cart_response_entity.dart';
+import 'package:e_commerce/Domain/Entities/add_product_to_favourite_response_entity/add_product_to_favourite_response_entity.dart';
 import 'package:e_commerce/Domain/Entities/auth_response_entity/failures_entity.dart';
 import 'package:e_commerce/Domain/Entities/category_or_brands_response_entity/category_or_brands_response_entity.dart';
 import 'package:e_commerce/Domain/Entities/products_response_entity/products_response_entity.dart';
@@ -7,7 +9,7 @@ import 'package:e_commerce/Domain/Repositories/data%20source/home_remote_data_so
 import 'package:e_commerce/Domain/Repositories/repositories/home_repo.dart';
 
 class HomeTabRepoImpl implements HomeRepo {
-  HomeRemoteDataSource homeTabRemoteDataSource;
+  HomeTabRemoteDataSourceImpl homeTabRemoteDataSource;
   HomeTabRepoImpl({required this.homeTabRemoteDataSource});
   @override
   Future<Either<FailuresEntity, CategoryOrBrandsResponseEntity>>
@@ -29,5 +31,11 @@ class HomeTabRepoImpl implements HomeRepo {
   Future<Either<FailuresEntity, AddCartResponseEntity>> addCartProduct(
       String productId) {
     return homeTabRemoteDataSource.addCartProduct(productId);
+  }
+
+  @override
+  Future<Either<FailuresEntity, AddProductToFavouriteResponseEntity>>
+      addProductToFavourite(String productId) {
+    return homeTabRemoteDataSource.addProductToFavourite(productId);
   }
 }
