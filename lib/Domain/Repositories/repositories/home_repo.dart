@@ -13,5 +13,6 @@ abstract class HomeRepo {
   Future<Either<FailuresEntity, ProductsResponseEntity>> getProducts();
   Future<Either<FailuresEntity, AddCartResponseEntity>> addCartProduct(
       String productId);
-      Future<Either<FailuresEntity , AddProductToFavouriteResponseEntity>> addProductToFavourite(String productId) ; 
+  Future<Either<FailuresEntity, AddProductToFavouriteResponseEntity>>
+      addProductToFavourite(String productId);
 }

@@ -53,7 +53,8 @@ class HomeTabRemoteDataSourceImpl implements HomeRemoteDataSource {
       return right(response);
     });
   }
-   @override
+
+  @override
   Future<Either<FailuresEntity, AddProductToFavouriteResponseEntity>>
       addProductToFavourite(String productId) async {
     var either = await apiManager.addProductToFavourite(productId);

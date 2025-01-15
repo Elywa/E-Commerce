@@ -65,9 +65,8 @@ class ProductItem extends StatelessWidget {
                         onTap: () {
                           ProductsTabViewModelCubit.get(context)
                               .addProductToFavourite(id ?? '');
-                          
                         },
-                        child:const CircleAvatar(
+                        child: const CircleAvatar(
                           backgroundColor: AppColors.whiteColor,
                           radius: 15,
                           child: Image(

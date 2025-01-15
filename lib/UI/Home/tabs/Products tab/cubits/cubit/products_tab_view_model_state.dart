@@ -29,6 +29,7 @@ class AddProductToCartFailureState extends ProductsTabViewModelState {
   FailuresEntity? errorMessage;
   AddProductToCartFailureState({required this.errorMessage});
 }
+
 class FavouriteTabLoading extends ProductsTabViewModelState {}
 
 class FavouriteTabSuccess extends ProductsTabViewModelState {
@@ -37,6 +38,6 @@ class FavouriteTabSuccess extends ProductsTabViewModelState {
 }
 
 class FavouriteTabFailure extends ProductsTabViewModelState {
-   FailuresEntity? error;
+  FailuresEntity? error;
   FavouriteTabFailure({required this.error});
 }
