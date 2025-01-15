@@ -1,4 +1,5 @@
 import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_cart_entity.dart';
+import 'package:e_commerce/Domain/Entities/get_user_wishlist_products_response_entity/get_user_wish_list_products_response_entity/wish_list_product_entity.dart';
 
 import 'package:e_commerce/UI/Home/widgets/cart_item_details.dart';
 import 'package:e_commerce/UI/Home/widgets/cart_item_image.dart';
@@ -9,7 +10,9 @@ import 'package:flutter/material.dart';
 class FavouriteItemView extends StatelessWidget {
   const FavouriteItemView({
     super.key,
+    required this.product,
   });
+  final WishListProductEntity product;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,7 +36,7 @@ class FavouriteItemView extends StatelessWidget {
         child: Row(
           children: [
             CartItemImage(
-              image: MyAssets.networkImage,
+              image: product.imageCover,
             ),
             const SizedBox(
               width: 10,
@@ -48,22 +51,27 @@ class FavouriteItemView extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Nike Air Jordan",
-                          overflow: TextOverflow.clip,
-                          maxLines: 1,
-                          style:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(
-                                    color: const Color(0xff06004F),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                  ),
+                        Expanded(
+                          child: Text(
+                            "${product.title}",
+                            overflow: TextOverflow.clip,
+                            maxLines: 1,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  color: const Color(0xff06004F),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                ),
+                          ),
                         ),
-                        const CircleAvatar(
-                          backgroundColor: AppColors.whiteColor,
-                          radius: 15,
-                          child: Image(
-                            image: AssetImage(MyAssets.favouriteImageIcon),
+                        InkWell(
+                          onTap: () {},
+                          child: const CircleAvatar(
+                            backgroundColor: AppColors.whiteColor,
+                            radius: 15,
+                            child: Icon(Icons.delete),
                           ),
                         )
                       ],
@@ -98,7 +106,7 @@ class FavouriteItemView extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "EGP 100",
+                        "EGP ${product.price}",
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: const Color(0xff06004F),
