@@ -6,6 +6,7 @@ import 'package:e_commerce/Domain/Entities/remove_favourite_product_response_ent
 import 'package:e_commerce/Domain/Use%20cases/get_user_wish_list_products_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/remove_favourite_product_use_case.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'favourite_tab_state.dart';
 
@@ -16,6 +17,9 @@ class FavouriteTabCubit extends Cubit<FavouriteTabState> {
   List<WishListProductEntity> favouriteList = [];
   GetUserWishListProductsUseCase getUserWishListProductsUseCase;
   RemoveFavouriteProductUseCase removeFavouriteProductUseCase;
+
+  static FavouriteTabCubit get(context) => BlocProvider.of(context);
+
   void getUserWishListProducts() async {
     emit(FavouriteTabLodaingState());
     var response = await getUserWishListProductsUseCase.invoke();
@@ -30,11 +34,23 @@ class FavouriteTabCubit extends Cubit<FavouriteTabState> {
 
   void deleteFavouriteProduct(String productId) async {
     emit(DeleteFavouriteProductLoading());
+   
     var response = await removeFavouriteProductUseCase.invoke(productId);
     response.fold((failure) {
+  
       emit(DeleteFavouriteProductFailure(error: failure));
+
     }, (success) {
-      emit(DeleteFavouriteProductSuccess(cartProducts: success));
+      // Remove the product from the favouriteList
+      favouriteList.removeWhere((product) => product.id == productId);
+
+      // Emit a success state with the updated list
+      emit(FavouriteTabSuccessState(
+        getUserWishListProductsResponseEntity:
+            GetUserWishListProductsResponseEntity(
+          data: favouriteList,
+        ),
+      ));
     });
   }
 }

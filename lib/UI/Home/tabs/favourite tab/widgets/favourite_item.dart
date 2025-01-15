@@ -1,5 +1,6 @@
 import 'package:e_commerce/Domain/Entities/get_cart_response_entity/get/get_product_cart_entity.dart';
 import 'package:e_commerce/Domain/Entities/get_user_wishlist_products_response_entity/get_user_wish_list_products_response_entity/wish_list_product_entity.dart';
+import 'package:e_commerce/UI/Home/tabs/favourite%20tab/cubit/favourite_tab_cubit.dart';
 
 import 'package:e_commerce/UI/Home/widgets/cart_item_details.dart';
 import 'package:e_commerce/UI/Home/widgets/cart_item_image.dart';
@@ -16,7 +17,7 @@ class FavouriteItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 8),
       child: Container(
         width: double.infinity,
         height: MediaQuery.sizeOf(context).height * .16,
@@ -67,7 +68,10 @@ class FavouriteItemView extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            FavouriteTabCubit.get(context)
+                                .deleteFavouriteProduct(product.id!);
+                          },
                           child: const CircleAvatar(
                             backgroundColor: AppColors.whiteColor,
                             radius: 15,
@@ -122,20 +126,25 @@ class FavouriteItemView extends StatelessWidget {
                               decoration: TextDecoration.lineThrough,
                             ),
                       ),
-                      const SizedBox(width: 9),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * .25,
-                        height: MediaQuery.sizeOf(context).width * .08,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: AppColors.primaryColor),
-                        child: Center(
-                          child: Text(
-                            "Add to Cart",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(fontSize: 14),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 3),
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * .25,
+                            height: MediaQuery.sizeOf(context).width * .08,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: AppColors.primaryColor),
+                            child: Center(
+                              child: Text(
+                                "Add to Cart",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(fontSize: 14),
+                              ),
+                            ),
                           ),
                         ),
                       )
