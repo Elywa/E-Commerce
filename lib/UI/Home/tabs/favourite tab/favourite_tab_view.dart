@@ -7,6 +7,6 @@ class FavouriteTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  FavouriteTabViewBody();
+    return FavouriteTabViewBody();
   }
 }

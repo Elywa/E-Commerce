@@ -5,8 +5,9 @@ import 'wish_list_products_dto.dart';
 class GetUserWishListProductsResponseDto
     extends GetUserWishListProductsResponseEntity {
   String? statusMsg;
-  String? message; 
-  GetUserWishListProductsResponseDto({super.status, super.count, super.data , this.message , this.statusMsg});
+  String? message;
+  GetUserWishListProductsResponseDto(
+      {super.status, super.count, super.data, this.message, this.statusMsg});
 
   factory GetUserWishListProductsResponseDto.fromJson(
       Map<String, dynamic> json) {

@@ -32,9 +32,13 @@ class FavouriteTabViewBody extends StatelessWidget {
                   Expanded(
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
-                      itemCount: state.getUserWishListProductsResponseEntity.data!.length,
+                      itemCount: state
+                          .getUserWishListProductsResponseEntity.data!.length,
                       itemBuilder: (context, index) {
-                        return  FavouriteItemView(product: state.getUserWishListProductsResponseEntity.data![index],);
+                        return FavouriteItemView(
+                          product: state.getUserWishListProductsResponseEntity
+                              .data![index],
+                        );
                       },
                     ),
                   )
