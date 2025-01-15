@@ -8,7 +8,7 @@ class RemoveFavouriteProductUseCase {
   RemoveFavouriteProductUseCase({required this.favouriteRepo});
 
   Future<Either<FailuresEntity, RemoveFavouriteProductResponseEntity>> invoke(
-      String produtcId) {
-    return favouriteRepo.removeFavouriteProduct(produtcId);
+      String productId) {
+    return favouriteRepo.removeFavouriteProduct(productId);
   }
 }

@@ -29,6 +29,7 @@ import 'package:e_commerce/Domain/Use%20cases/get_cart_products_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/get_user_wish_list_products_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/login_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/register_use_case.dart';
+import 'package:e_commerce/Domain/Use%20cases/remove_favourite_product_use_case.dart';
 import 'package:e_commerce/Domain/Use%20cases/update_cart_product_use_case.dart';
 
 RegisterUseCase injectRegisterUseCase() {
@@ -112,4 +113,8 @@ FavouriteRemoteDataSourceImpl injectFavouriteRemoteDataSource() {
 
 GetUserWishListProductsUseCase injectGetUserWishListProductsUseCase() {
   return GetUserWishListProductsUseCase(favouriteRepo: injectFavouriteRepo());
+}
+
+RemoveFavouriteProductUseCase injectRemoveFavouriteProductUseCase() {
+  return RemoveFavouriteProductUseCase(favouriteRepo: injectFavouriteRepo());
 }

@@ -9,8 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavouriteTabViewBody extends StatelessWidget {
   FavouriteTabViewBody({super.key});
-  FavouriteTabCubit viewModel =
-      FavouriteTabCubit(injectGetUserWishListProductsUseCase());
+  FavouriteTabCubit viewModel = FavouriteTabCubit(
+      injectGetUserWishListProductsUseCase(),
+      injectRemoveFavouriteProductUseCase());
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavouriteTabCubit, FavouriteTabState>(
